@@ -16,6 +16,7 @@ import DogTrainingPage from "../dog-training-page"
 import CarDetailingPage from "../car-detailing-page"
 import PersonalTrainerPage from "../personal-trainer-page"
 import BarberPage from "../barber-page"
+import BrandIntroPage from "../brand-intro-page"
 
 export default function Page() {
   const [currentPage, setCurrentPage] = useState<
@@ -33,6 +34,13 @@ export default function Page() {
     | "personal-trainer"
     | "barber"
   >("blue-collar")
+  const [showBrandIntro, setShowBrandIntro] = useState(true)
+
+  const handleIndustrySelect = (industry: string) => {
+    setCurrentPage(industry as any)
+    setShowBrandIntro(false)
+  }
+
   const pageSwitcher = (
     <div className="fixed top-4 right-4 z-50 bg-slate-800 rounded-lg shadow-2xl p-3 max-w-xs border border-slate-700">
       <div className="flex items-center gap-2 mb-3 pb-2 border-b border-slate-600">
@@ -194,6 +202,10 @@ export default function Page() {
       </div>
     </div>
   )
+
+  if (showBrandIntro) {
+    return <BrandIntroPage onIndustrySelect={handleIndustrySelect} />
+  }
 
   if (currentPage === "medical") {
     return (
