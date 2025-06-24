@@ -11,6 +11,7 @@ import { CheckCircle, TrendingUp, DollarSign, Users, Award } from "lucide-react"
 import Image from "next/image"
 import { LoadingProgress } from "./components/loading-progress"
 import { useConversionTracking } from "./hooks/use-conversion-tracking"
+import { Header } from "@/components/header"
 
 export default function DogTrainingPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -21,7 +22,7 @@ export default function DogTrainingPage() {
   })
   const [isLoading, setIsLoading] = useState(true)
   const [logoLoaded, setLogoLoaded] = useState(false)
-  const [contentReady, setContentReady] = useState(false)
+  const [contentReady, setContentReady] = useState(0)
   const [loadingProgress, setLoadingProgress] = useState(0)
   const [hasError, setHasError] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
@@ -39,7 +40,7 @@ export default function DogTrainingPage() {
     const loadingTimeout = setTimeout(() => {
       if (!logoLoaded || !contentReady) {
         setHasError(true)
-        setErrorMessage("Loading is taking longer than expected. This might be due to a slow connection.")
+        setErrorMessage("Unable to load the ESS logo. Please check your internet connection and try again.")
       }
     }, 10000)
 
@@ -269,20 +270,7 @@ export default function DogTrainingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-center">
-            <Image
-              src="/ess-logo-light.png"
-              alt="Engineered Success Sales"
-              width={400}
-              height={200}
-              className="h-12 sm:h-14 md:h-16 w-auto max-w-full"
-              priority
-            />
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
@@ -596,6 +584,7 @@ export default function DogTrainingPage() {
         </div>
       </section>
 
+      {/* Footer */}
       <footer className="bg-blue-900 text-white py-6" style={{ backgroundColor: "#003366" }}>
         <div className="container mx-auto px-4 text-center">
           <p style={{ fontFamily: "Roboto, sans-serif", color: "#FFFFFF" }}>

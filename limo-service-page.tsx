@@ -11,6 +11,7 @@ import { CheckCircle, TrendingUp, DollarSign, Users, Car } from "lucide-react"
 import Image from "next/image"
 import { LoadingProgress } from "./components/loading-progress"
 import { useConversionTracking } from "./hooks/use-conversion-tracking"
+import { Header } from "@/components/header"
 
 export default function LimoServicePage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -21,7 +22,7 @@ export default function LimoServicePage() {
   })
   const [isLoading, setIsLoading] = useState(true)
   const [logoLoaded, setLogoLoaded] = useState(false)
-  const [contentReady, setContentReady] = useState(false)
+  const [contentReady, setContentReady] = useState(0)
   const [loadingProgress, setLoadingProgress] = useState(0)
   const [hasError, setHasError] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
@@ -347,21 +348,7 @@ export default function LimoServicePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-center">
-            <Image
-              src="/ess-logo-light.png"
-              alt="Engineered Success Sales"
-              width={400}
-              height={200}
-              className="h-12 sm:h-14 md:h-16 w-auto max-w-full"
-              priority
-            />
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <main className="container mx-auto px-4 py-16">

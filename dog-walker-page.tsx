@@ -7,10 +7,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { CheckCircle, TrendingUp, DollarSign, Users, Heart } from "lucide-react"
+import { CheckCircle, Heart } from "lucide-react"
 import Image from "next/image"
 import { LoadingProgress } from "./components/loading-progress"
 import { useConversionTracking } from "./hooks/use-conversion-tracking"
+import { Header } from "@/components/header"
 
 export default function DogWalkerPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -21,7 +22,7 @@ export default function DogWalkerPage() {
   })
   const [isLoading, setIsLoading] = useState(true)
   const [logoLoaded, setLogoLoaded] = useState(false)
-  const [contentReady, setContentReady] = useState(false)
+  const [contentReady, setContentReady] = useState(0)
   const [loadingProgress, setLoadingProgress] = useState(0)
   const [hasError, setHasError] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
@@ -317,21 +318,7 @@ export default function DogWalkerPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-center">
-            <Image
-              src="/ess-logo-light.png"
-              alt="Engineered Success Sales"
-              width={400}
-              height={200}
-              className="h-12 sm:h-14 md:h-16 w-auto max-w-full"
-              priority
-            />
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <main className="container mx-auto px-4 py-16">
@@ -541,88 +528,6 @@ export default function DogWalkerPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {/* Benefit Card 1 */}
-              <Card className="text-center p-6 shadow-lg border-0 hover:shadow-xl transition-shadow">
-                <CardContent className="pt-6">
-                  <div className="mb-4 flex justify-center">
-                    <TrendingUp className="w-12 h-12" style={{ color: "#FFCC00" }} />
-                  </div>
-                  <h3
-                    className="text-xl font-bold mb-3"
-                    style={{
-                      fontFamily: "Oswald, sans-serif",
-                      color: "#333333",
-                    }}
-                  >
-                    More Clients
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{
-                      fontFamily: "Roboto, sans-serif",
-                      color: "#666666",
-                    }}
-                  >
-                    Fill your schedule with pet owners who value quality care and pay premium rates.
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Benefit Card 2 */}
-              <Card className="text-center p-6 shadow-lg border-0 hover:shadow-xl transition-shadow">
-                <CardContent className="pt-6">
-                  <div className="mb-4 flex justify-center">
-                    <DollarSign className="w-12 h-12" style={{ color: "#003366" }} />
-                  </div>
-                  <h3
-                    className="text-xl font-bold mb-3"
-                    style={{
-                      fontFamily: "Oswald, sans-serif",
-                      color: "#333333",
-                    }}
-                  >
-                    Premium Pricing
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{
-                      fontFamily: "Roboto, sans-serif",
-                      color: "#666666",
-                    }}
-                  >
-                    Charge what you're worth and stop competing with cheap, unreliable services.
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Benefit Card 3 */}
-              <Card className="text-center p-6 shadow-lg border-0 hover:shadow-xl transition-shadow">
-                <CardContent className="pt-6">
-                  <div className="mb-4 flex justify-center">
-                    <Users className="w-12 h-12" style={{ color: "#FFCC00" }} />
-                  </div>
-                  <h3
-                    className="text-xl font-bold mb-3"
-                    style={{
-                      fontFamily: "Oswald, sans-serif",
-                      color: "#333333",
-                    }}
-                  >
-                    Loyal Clients
-                  </h3>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{
-                      fontFamily: "Roboto, sans-serif",
-                      color: "#666666",
-                    }}
-                  >
-                    Build long-term relationships that generate referrals and recurring revenue.
-                  </p>
-                </CardContent>
-              </Card>
-
-              {/* Benefit Card 4 */}
               <Card className="text-center p-6 shadow-lg border-0 hover:shadow-xl transition-shadow">
                 <CardContent className="pt-6">
                   <div className="mb-4 flex justify-center">

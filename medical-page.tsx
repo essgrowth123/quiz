@@ -7,10 +7,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { CheckCircle, TrendingUp, DollarSign, Users, Heart } from "lucide-react"
+import { CheckCircle, TrendingUp, DollarSign, Users, Smile } from "lucide-react"
 import Image from "next/image"
 import { LoadingProgress } from "./components/loading-progress"
 import { useConversionTracking } from "./hooks/use-conversion-tracking"
+import { Header } from "@/components/header"
 
 export default function MedicalPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -21,7 +22,7 @@ export default function MedicalPage() {
   })
   const [isLoading, setIsLoading] = useState(true)
   const [logoLoaded, setLogoLoaded] = useState(false)
-  const [contentReady, setContentReady] = useState(false)
+  const [contentReady, setContentReady] = useState(0)
   const [loadingProgress, setLoadingProgress] = useState(0)
   const [hasError, setHasError] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
@@ -317,21 +318,7 @@ export default function MedicalPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-center">
-            <Image
-              src="/ess-logo-light.png"
-              alt="Engineered Success Sales"
-              width={400}
-              height={200}
-              className="h-12 sm:h-14 md:h-16 w-auto max-w-full"
-              priority
-            />
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <main className="container mx-auto px-4 py-16">
@@ -350,7 +337,10 @@ export default function MedicalPage() {
                   For Medical Practices:{" "}
                   <span
                     className="inline-block px-2 py-1 rounded"
-                    style={{ backgroundColor: "#FFCC00", color: "#333333" }}
+                    style={{
+                      backgroundColor: "#FFCC00",
+                      color: "#333333",
+                    }}
                   >
                     Grow
                   </span>{" "}
@@ -581,7 +571,7 @@ export default function MedicalPage() {
                       color: "#333333",
                     }}
                   >
-                    Higher Revenue
+                    Higher Case Value
                   </h3>
                   <p
                     className="text-sm leading-relaxed"
@@ -626,7 +616,7 @@ export default function MedicalPage() {
               <Card className="text-center p-6 shadow-lg border-0 hover:shadow-xl transition-shadow">
                 <CardContent className="pt-6">
                   <div className="mb-4 flex justify-center">
-                    <Heart className="w-12 h-12" style={{ color: "#003366" }} />
+                    <Smile className="w-12 h-12" style={{ color: "#003366" }} />
                   </div>
                   <h3
                     className="text-xl font-bold mb-3"
@@ -635,7 +625,7 @@ export default function MedicalPage() {
                       color: "#333333",
                     }}
                   >
-                    Better Care
+                    Happy Patients
                   </h3>
                   <p
                     className="text-sm leading-relaxed"
@@ -644,7 +634,7 @@ export default function MedicalPage() {
                       color: "#666666",
                     }}
                   >
-                    Focus on providing excellent care while we handle your patient acquisition.
+                    Create positive experiences that turn patients into practice advocates.
                   </p>
                 </CardContent>
               </Card>

@@ -3,6 +3,7 @@
 import type React from "react"
 import { LeadCapturePopup } from "./components/lead-capture-popup"
 import { usePopupTrigger } from "./hooks/use-popup-trigger"
+import { Header } from "@/components/header"
 
 const LandingPage: React.FC = () => {
   const { shouldShow, closePopup } = usePopupTrigger({
@@ -13,6 +14,7 @@ const LandingPage: React.FC = () => {
 
   return (
     <div>
+      <Header />
       <h1>Welcome to our Landing Page!</h1>
       <p>This is a sample landing page.</p>
 

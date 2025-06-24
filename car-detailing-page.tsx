@@ -11,6 +11,7 @@ import { CheckCircle, TrendingUp, DollarSign, Users, Star } from "lucide-react"
 import Image from "next/image"
 import { LoadingProgress } from "./components/loading-progress"
 import { useConversionTracking } from "./hooks/use-conversion-tracking"
+import { Header } from "@/components/header"
 
 export default function CarDetailingPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -269,20 +270,7 @@ export default function CarDetailingPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-center">
-            <Image
-              src="/ess-logo-light.png"
-              alt="Engineered Success Sales"
-              width={400}
-              height={200}
-              className="h-12 sm:h-14 md:h-16 w-auto max-w-full"
-              priority
-            />
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
@@ -341,6 +329,7 @@ export default function CarDetailingPage() {
               </div>
             </div>
 
+            {/* Right Column - Form */}
             <div className="lg:pl-8">
               <Card className="shadow-2xl border-0">
                 <CardHeader className="text-center pb-6">
@@ -411,49 +400,17 @@ export default function CarDetailingPage() {
                       />
                     </div>
 
-                    <div className="space-y-2">
-                      <Label
-                        htmlFor="business"
-                        className="text-base font-medium"
+                    <div className="space-y-1">
+                      <p
+                        className="text-sm text-center leading-relaxed"
                         style={{
                           fontFamily: "Roboto, sans-serif",
-                          color: "#333333",
+                          color: "#666666",
                         }}
                       >
-                        Detailing Business Name
-                      </Label>
-                      <Input
-                        id="business"
-                        name="business"
-                        type="text"
-                        required
-                        value={formData.business}
-                        onChange={handleInputChange}
-                        className="h-12 text-base border-2 focus:border-yellow-400"
-                        placeholder="Enter your detailing business name"
-                      />
+                        By submitting, you agree to receive communications from ESS. We respect your privacy.
+                      </p>
                     </div>
-
-                    <Button
-                      type="submit"
-                      className="w-full h-14 text-lg font-semibold text-white hover:opacity-90 transition-opacity"
-                      style={{
-                        fontFamily: "Montserrat, sans-serif",
-                        backgroundColor: "#003366",
-                      }}
-                    >
-                      Get My Premium Detailing Business Plan
-                    </Button>
-
-                    <p
-                      className="text-sm text-center leading-relaxed"
-                      style={{
-                        fontFamily: "Roboto, sans-serif",
-                        color: "#666666",
-                      }}
-                    >
-                      By submitting, you agree to receive communications from ESS. We respect your privacy.
-                    </p>
                   </form>
                 </CardContent>
               </Card>

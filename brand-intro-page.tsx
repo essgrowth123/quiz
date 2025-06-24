@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Car, Home, Wrench, Stethoscope, Smile, Heart, Sparkles, Award, Scissors, Star, Zap } from "lucide-react"
 import Image from "next/image"
 import { LoadingProgress } from "./components/loading-progress"
+import { Header } from "@/components/header"
 
 interface IndustryOption {
   id: string
@@ -234,45 +235,7 @@ export default function BrandIntroPage({ onIndustrySelect }: BrandIntroPageProps
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
-      {/* Promo Banner */}
-      <div className="bg-gradient-to-r from-red-600 to-red-700 text-white py-2 text-center">
-        <p className="text-sm font-bold animate-pulse">
-          🎆 JULY4TH SPECIAL: Save 10% on All Services - Use Code:{" "}
-          <span className="bg-white text-red-600 px-2 py-1 rounded font-black">JULY4</span> 🎆
-        </p>
-      </div>
-
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-between items-center">
-            {/* Logo - Left Side, Bigger */}
-            <div className="flex-shrink-0">
-              <Image
-                src="/ess-logo-light.png"
-                alt="Engineered Success Sales"
-                width={500}
-                height={250}
-                className="h-16 sm:h-20 md:h-24 w-auto"
-                priority
-              />
-            </div>
-
-            {/* CTA Button - Right Side */}
-            <div className="flex-shrink-0">
-              <Button
-                onClick={() => window.open("https://calendly.com/essgrowth/30min", "_blank")}
-                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-6 py-3 text-lg shadow-lg transform hover:scale-105 transition-all duration-200"
-                style={{
-                  fontFamily: "Montserrat, sans-serif",
-                }}
-              >
-                📞 Talk With Us Now
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <main className="container mx-auto px-4 py-16">
