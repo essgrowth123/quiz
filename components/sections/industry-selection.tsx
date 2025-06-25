@@ -38,38 +38,40 @@ const industries = [
 
 export function IndustrySelection() {
   return (
-    <section id="industries" className="homepage-section bg-white-smoke">
+    <section id="industries" className="bg-white py-16 lg:py-24">
       <div className="container mx-auto container-padding">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black-charcoal mb-6 font-oswald">
+            <h2 className="text-4xl lg:text-6xl font-bold text-black-charcoal mb-8 font-oswald">
               Choose Your Industry
             </h2>
-            <p className="text-lg sm:text-xl text-steel-grey max-w-3xl mx-auto">
+            <p className="text-xl lg:text-2xl text-steel-grey max-w-4xl mx-auto leading-relaxed">
               Get specialized sales training designed for your specific business type and customer challenges.
             </p>
           </div>
 
-          {/* Industry Cards Grid - Now with 5 cards */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8 mb-8">
+          {/* Enhanced Industry Cards Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-12">
             {industries.map((industry) => (
               <Link key={industry.href} href={industry.href} className="group">
-                <Card className="industry-card h-full border-2 border-transparent group-hover:border-construction-yellow bg-white">
-                  <CardContent className="p-6 lg:p-8 text-center h-full flex flex-col justify-center">
-                    <div className="text-5xl lg:text-6xl mb-4 icon-hover">{industry.emoji}</div>
-                    <h3 className="text-lg lg:text-xl font-bold text-black-charcoal mb-3 group-hover:text-ess-blue transition-colors duration-300 font-oswald">
+                <Card className="industry-card-enhanced h-full border-2 border-transparent group-hover:border-construction-yellow bg-white">
+                  <CardContent className="p-8 lg:p-10 text-center h-full flex flex-col justify-center">
+                    <div className="text-6xl lg:text-7xl mb-6 icon-hover">{industry.emoji}</div>
+                    <h3 className="text-xl lg:text-2xl font-bold text-black-charcoal mb-4 group-hover:text-ess-blue transition-colors duration-300 font-oswald">
                       {industry.title}
                     </h3>
-                    <p className="text-steel-grey leading-relaxed text-sm lg:text-base">{industry.description}</p>
+                    <p className="text-steel-grey leading-relaxed text-base lg:text-lg font-medium">
+                      {industry.description}
+                    </p>
                   </CardContent>
                 </Card>
               </Link>
             ))}
           </div>
 
-          {/* Yellow Banner Line - Backup/Additional */}
-          <div className="text-center">
-            <p className="text-construction-yellow font-medium text-lg">
+          {/* Enhanced Yellow Banner Line */}
+          <div className="text-center bg-construction-yellow/10 rounded-lg py-6 px-8">
+            <p className="text-construction-yellow font-bold text-xl lg:text-2xl">
               Also serving: Doctors · Dentists · Med Spas · Attorneys · Pet Services
             </p>
           </div>

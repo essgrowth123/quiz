@@ -85,8 +85,21 @@
 }
 
 @layer components {
-  /* Hero Heading Styles - Clean Version */
-  .hero h1 {
+  /* Enhanced Hero Section */
+  .hero-enhanced {
+    background: linear-gradient(135deg, var(--ess-blue) 0%, var(--black-charcoal) 100%);
+    position: relative;
+  }
+
+  /* Blueprint Pattern Background */
+  .bg-blueprint-pattern {
+    background-image: linear-gradient(rgba(242, 192, 56, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(242, 192, 56, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Enhanced Hero Heading */
+  .hero-heading-enhanced {
     background: none !important;
     background-color: transparent !important;
     color: #f5f5f5;
@@ -95,119 +108,154 @@
     font-weight: 700;
     text-align: center;
     padding: 0;
-    margin: 0 0 16px 0;
-    line-height: 1.3;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    margin: 0 0 24px 0;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
-  /* Hero Subheadline Styles */
-  .hero-subheadline {
-    color: #f2c038; /* Construction Yellow for pop */
+  /* Enhanced Hero Subheadline */
+  .hero-subheadline-enhanced {
+    color: #f2c038;
     font-family: var(--font-roboto);
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.6;
+    font-size: 1.25rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
 
-  /* Alternative hero subheadline for clean neutrality */
-  .hero-subheadline-neutral {
-    color: #f5f5f5; /* White Smoke for clean neutrality */
-    font-family: var(--font-roboto);
-    font-weight: 400;
-    line-height: 1.5;
+  /* Enhanced Primary Button with Pulse Animation */
+  .btn-primary-enhanced {
+    background-color: var(--black-charcoal);
+    color: white;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 12px;
+    font-family: var(--font-oswald);
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: pulse-glow 2s infinite;
+  }
+
+  .btn-primary-enhanced:hover {
+    background-color: var(--ess-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(13, 44, 84, 0.4);
+  }
+
+  /* Pulse Animation */
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+      box-shadow: 0 4px 25px rgba(242, 192, 56, 0.3);
+    }
+  }
+
+  /* Enhanced Form Card */
+  .form-card-enhanced {
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Enhanced Industry Cards */
+  .industry-card-enhanced {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .industry-card-enhanced:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+  }
+
+  /* Stat Strip Styling */
+  .stat-strip {
+    background: linear-gradient(135deg, var(--white-smoke) 0%, #ffffff 100%);
+    border-top: 3px solid var(--construction-yellow);
+    border-bottom: 3px solid var(--construction-yellow);
   }
 
   /* Responsive hero heading sizes */
   @media (min-width: 640px) {
-    .hero h1 {
-      font-size: 3rem;
+    .hero-heading-enhanced {
+      font-size: 3.5rem;
+    }
+    .hero-subheadline-enhanced {
+      font-size: 1.5rem;
     }
   }
 
   @media (min-width: 768px) {
-    .hero h1 {
-      font-size: 3.5rem;
+    .hero-heading-enhanced {
+      font-size: 4rem;
+    }
+    .hero-subheadline-enhanced {
+      font-size: 1.75rem;
     }
   }
 
   @media (min-width: 1024px) {
-    .hero h1 {
-      font-size: 4rem;
+    .hero-heading-enhanced {
+      font-size: 5rem;
+      text-align: left;
+    }
+    .hero-subheadline-enhanced {
+      font-size: 2rem;
       text-align: left;
     }
   }
 
   @media (min-width: 1280px) {
-    .hero h1 {
-      font-size: 4.5rem;
+    .hero-heading-enhanced {
+      font-size: 5.5rem;
     }
   }
 
-  /* Industry Card Hover Effects */
-  .industry-card {
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-  }
+  /* Mobile Optimizations */
+  @media (max-width: 640px) {
+    .btn-mobile-full {
+      width: 100%;
+      text-align: center;
+      padding: 18px 24px;
+      font-size: 1.1rem;
+    }
 
-  .industry-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-  }
+    .industry-card-enhanced {
+      padding: 24px;
+    }
 
-  /* Primary Button - Black Charcoal with ESS Blue hover */
-  .btn-primary {
-    background-color: var(--black-charcoal);
-    color: white;
-    padding: 14px 28px;
-    border: none;
-    border-radius: 8px;
-    font-family: var(--font-oswald);
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .btn-primary:hover {
-    background-color: var(--ess-blue);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(13, 44, 84, 0.3);
-  }
-
-  /* Danger Button - Urgency Red */
-  .btn-danger {
-    background-color: var(--urgency-red);
-    color: white;
-    padding: 14px 28px;
-    border: none;
-    border-radius: 8px;
-    font-family: var(--font-oswald);
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .btn-danger:hover {
-    background-color: #8c1a1a;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(176, 32, 32, 0.3);
+    .form-card-enhanced {
+      margin: 0 16px;
+    }
   }
 
   /* Section Spacing */
-  .section-spacing {
-    @apply py-12 sm:py-16 lg:py-24;
+  .section-spacing-enhanced {
+    padding: 48px 0;
   }
 
-  .container-padding {
-    @apply px-4 sm:px-6 lg:px-8;
+  @media (min-width: 768px) {
+    .section-spacing-enhanced {
+      padding: 80px 0;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-spacing-enhanced {
+      padding: 120px 0;
+    }
   }
 
   /* Brand Color Utilities */
@@ -255,6 +303,10 @@
     color: var(--urgency-red);
   }
 
+  .text-white-smoke {
+    color: var(--white-smoke);
+  }
+
   /* Mobile Center */
   .mobile-center {
     @apply text-center lg:text-left;
@@ -268,25 +320,15 @@
     opacity: 0.3;
   }
 
-  /* Additional Industries Line */
-  .additional-industries {
-    color: var(--construction-yellow);
-    font-family: var(--font-roboto);
-    font-size: 1rem;
-    text-align: center;
-    margin-top: 2rem;
-    font-weight: 500;
+  /* Container Padding */
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-
-  /* Responsive Button Sizing */
-  .btn-mobile-full {
-    @apply w-full sm:w-auto;
   }
 
   /* Hover Effects */
@@ -342,7 +384,7 @@ html {
   border-radius: 8px;
 }
 
-/* Section spacing improvements */
+/* Homepage section spacing */
 .homepage-section {
   padding: 48px 0;
 }
@@ -420,21 +462,15 @@ html {
 
 /* Button Hover Improvements */
 .btn-primary,
-.btn-danger {
+.btn-danger,
+.btn-primary-enhanced {
   transition: all 0.3s ease;
 }
 
 .btn-primary:hover,
-.btn-danger:hover {
+.btn-danger:hover,
+.btn-primary-enhanced:hover {
   transform: translateY(-2px);
-}
-
-/* Mobile Button Full Width */
-@media (max-width: 640px) {
-  .btn-mobile-full {
-    width: 100%;
-    text-align: center;
-  }
 }
 
 /* Scrollbar Hide */
@@ -445,38 +481,4 @@ html {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari and Opera */
-}
-
-/* Industry Grid Responsive Layout */
-@media (min-width: 1280px) {
-  .industry-grid-5 {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-@media (max-width: 1279px) and (min-width: 1024px) {
-  .industry-grid-5 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 1023px) and (min-width: 640px) {
-  .industry-grid-5 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 639px) {
-  .industry-grid-5 {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Yellow banner styling */
-.additional-industries {
-  color: #f2c038;
-  text-align: center;
-  font-weight: 500;
-  font-size: 1.125rem;
-  margin-top: 2rem;
 }

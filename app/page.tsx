@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { HeroSection } from "@/components/sections/hero-section"
+import { StatStrip } from "@/components/sections/stat-strip"
 import { BenefitsSection } from "@/components/sections/benefits-section"
 import { WhoWeHelped } from "@/components/sections/who-we-helped"
 import { TestimonialBar } from "@/components/sections/testimonial-bar"
@@ -65,7 +66,7 @@ export default function HomePage() {
 
       <HeroSection
         industry="general"
-        headline="🚨 If You're Chasing Leads or Losing Quotes—This Audit Will Show You Why"
+        headline="Ready to transform your sales process and boost conversions?"
         subheadline="Whether you're in trades, real estate, med spas, or law—you shouldn't be guessing where your sales are leaking. Our 30-minute ESS Sales Leak Audit ($297 value) gives you clarity, not fluff."
         benefits={[
           "✅ Designed for service businesses: from contractors to closers",
@@ -76,6 +77,8 @@ export default function HomePage() {
         formDescription="Get the sales system that works for your industry."
         businessLabel="Business Name"
       />
+
+      <StatStrip />
 
       <BenefitsSection
         title="What You'll Walk Away With"
