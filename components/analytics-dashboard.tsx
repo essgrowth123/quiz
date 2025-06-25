@@ -151,32 +151,34 @@ export function AnalyticsDashboard() {
   }
 
   const unknownPagesCount = Object.keys(stats.unknownPages).length
-  const categoriesWithTraffic = Object.entries(stats.categoryStats).filter(([, data]) => data.totalViews > 0)
+  const categoriesWithTraffic = Object.entries(stats.categoryStats)
 
   return (
-    <div className="fixed bottom-4 left-4 z-50 w-[450px] max-h-[500px] overflow-y-auto">
+    <div className="fixed bottom-4 left-4 z-50 w-[600px] max-h-[700px] overflow-y-auto">
       <Card className="shadow-2xl border-2">
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <CardTitle className="text-lg">🎯 ESS Conversion Tracker</CardTitle>
             <div className="flex items-center space-x-1">
-              {unknownPagesCount > 0 && (
-                <Button
-                  onClick={() => setShowAdmin(true)}
-                  variant="outline"
-                  size="sm"
-                  className="h-6 px-2 text-xs border-amber-300 text-amber-700 hover:bg-amber-50"
-                >
-                  <Settings className="w-3 h-3 mr-1" />
-                  Admin ({unknownPagesCount})
-                </Button>
-              )}
+              <Button
+                onClick={() => setShowAdmin(true)}
+                variant="outline"
+                size="sm"
+                className="h-6 px-2 text-xs border-blue-300 text-blue-700 hover:bg-blue-50"
+              >
+                <Settings className="w-3 h-3 mr-1" />
+                Admin {unknownPagesCount > 0 && `(${unknownPagesCount})`}
+              </Button>
               <Button onClick={() => setIsVisible(false)} variant="ghost" size="sm" className="h-6 w-6 p-0">
                 ✕
               </Button>
             </div>
           </div>
           <CardDescription>Real-time landing page performance by category</CardDescription>
+          <div className="text-xs text-gray-500 mt-2">
+            Debug: {Object.keys(stats.categoryStats).length} categories, {Object.keys(stats.unknownPages).length}{" "}
+            unknown pages
+          </div>
         </CardHeader>
         <CardContent className="space-y-4">
           {/* Best Performer */}

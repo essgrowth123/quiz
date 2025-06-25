@@ -11,6 +11,7 @@ import { CheckCircle, TrendingUp, DollarSign, Users, Zap } from "lucide-react"
 import Image from "next/image"
 import { LoadingProgress } from "./components/loading-progress"
 import { useConversionTracking } from "./hooks/use-conversion-tracking"
+import { analytics } from "./lib/analytics"
 
 export default function PersonalTrainerPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -80,6 +81,14 @@ export default function PersonalTrainerPage() {
       return () => timers.forEach(clearTimeout)
     }
   }, [hasError, retryCount])
+
+  useEffect(() => {
+    // Track page view when component mounts
+    analytics.track({
+      page: "personal-trainer",
+      event: "page_view",
+    })
+  }, [])
 
   const handleLogoLoad = () => {
     setLogoLoaded(true)

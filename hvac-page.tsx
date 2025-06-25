@@ -11,6 +11,8 @@ import { CheckCircle, TrendingUp, DollarSign, Users, Thermometer } from "lucide-
 import Image from "next/image"
 import { LoadingProgress } from "./components/loading-progress"
 import { useConversionTracking } from "./hooks/use-conversion-tracking"
+import { Header } from "@/components/header"
+import { analytics } from "./lib/analytics"
 
 export default function HVACPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -30,22 +32,18 @@ export default function HVACPage() {
   const { trackFormSubmit, trackCalendlyClick, trackFormError } = useConversionTracking("hvac")
 
   useEffect(() => {
-    // Initialize loading progress
     setLoadingProgress(10)
-
-    // Set content as ready after a brief delay to ensure DOM is painted
     const contentTimer = setTimeout(() => {
       setContentReady(true)
       setLoadingProgress((prev) => Math.max(prev, 60))
     }, 300)
 
-    // Set up loading timeout
     const loadingTimeout = setTimeout(() => {
       if (!logoLoaded || !contentReady) {
         setHasError(true)
         setErrorMessage("Loading is taking longer than expected. This might be due to a slow connection.")
       }
-    }, 10000) // 10 second timeout
+    }, 10000)
 
     return () => {
       clearTimeout(contentTimer)
@@ -54,28 +52,21 @@ export default function HVACPage() {
   }, [logoLoaded, contentReady, retryCount])
 
   useEffect(() => {
-    // Update progress when logo loads
     if (logoLoaded) {
       setLoadingProgress((prev) => Math.max(prev, 85))
     }
   }, [logoLoaded])
 
   useEffect(() => {
-    // Only hide loading when both logo and content are ready
     if (logoLoaded && contentReady && !hasError) {
-      // Complete the progress bar
       setLoadingProgress(100)
-
-      // Add a minimum loading time to prevent jarring flash
       const minLoadingTimer = setTimeout(() => {
         setIsLoading(false)
       }, 800)
-
       return () => clearTimeout(minLoadingTimer)
     }
   }, [logoLoaded, contentReady, hasError])
 
-  // Simulate progressive loading steps
   useEffect(() => {
     if (!hasError) {
       const progressSteps = [
@@ -83,13 +74,11 @@ export default function HVACPage() {
         { delay: 400, progress: 40 },
         { delay: 600, progress: 50 },
       ]
-
       const timers = progressSteps.map(({ delay, progress }) =>
         setTimeout(() => {
           setLoadingProgress((prev) => Math.max(prev, progress))
         }, delay),
       )
-
       return () => timers.forEach(clearTimeout)
     }
   }, [hasError, retryCount])
@@ -101,7 +90,6 @@ export default function HVACPage() {
 
   const handleLogoError = () => {
     if (retryCount < 2) {
-      // Auto-retry up to 2 times
       setTimeout(() => {
         setRetryCount((prev) => prev + 1)
         setLogoLoaded(false)
@@ -119,8 +107,6 @@ export default function HVACPage() {
     setContentReady(false)
     setLoadingProgress(10)
     setRetryCount(0)
-
-    // Restart the loading process
     setTimeout(() => {
       setContentReady(true)
     }, 300)
@@ -128,13 +114,8 @@ export default function HVACPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-
-    // Track form submission
     trackFormSubmit(formData)
-
     setFormSubmitted(true)
-
-    // Simulate redirect to Calendly after 2 seconds
     setTimeout(() => {
       trackCalendlyClick()
       window.open("https://calendly.com/essgrowth/30min", "_blank")
@@ -148,10 +129,17 @@ export default function HVACPage() {
     })
   }
 
+  useEffect(() => {
+    // Track page view when component mounts
+    analytics.track({
+      page: "hvac",
+      event: "page_view",
+    })
+  }, [])
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
-        {/* Header Skeleton */}
         <header className="bg-white shadow-sm">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex justify-center">
@@ -159,8 +147,6 @@ export default function HVACPage() {
             </div>
           </div>
         </header>
-
-        {/* Loading Progress Section */}
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-md mx-auto">
             <LoadingProgress
@@ -171,79 +157,6 @@ export default function HVACPage() {
             />
           </div>
         </div>
-
-        {/* Hero Section Skeleton */}
-        <main className="container mx-auto px-4 py-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left Column Skeleton */}
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  {/* Title Skeleton */}
-                  <div className="space-y-3">
-                    <div className="h-12 bg-gray-200 rounded animate-pulse w-full"></div>
-                    <div className="h-12 bg-gray-200 rounded animate-pulse w-4/5"></div>
-                  </div>
-
-                  {/* Subtitle Skeleton */}
-                  <div className="space-y-2">
-                    <div className="h-6 bg-gray-200 rounded animate-pulse w-full"></div>
-                    <div className="h-6 bg-gray-200 rounded animate-pulse w-5/6"></div>
-                    <div className="h-6 bg-gray-200 rounded animate-pulse w-3/4"></div>
-                  </div>
-                </div>
-
-                {/* Benefits Skeleton */}
-                <div className="space-y-4">
-                  {[1, 2, 3, 4].map((item) => (
-                    <div key={item} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-gray-200 rounded-full animate-pulse mt-1 flex-shrink-0"></div>
-                      <div className="h-6 bg-gray-200 rounded animate-pulse flex-1"></div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right Column Form Skeleton */}
-              <div className="lg:pl-8">
-                <div className="bg-white shadow-2xl rounded-lg border-0 p-6">
-                  {/* Form Header Skeleton */}
-                  <div className="text-center pb-6 space-y-3">
-                    <div className="h-8 bg-gray-200 rounded animate-pulse w-3/4 mx-auto"></div>
-                    <div className="h-5 bg-gray-200 rounded animate-pulse w-5/6 mx-auto"></div>
-                  </div>
-
-                  {/* Form Fields Skeleton */}
-                  <div className="space-y-6">
-                    <div className="space-y-2">
-                      <div className="h-5 bg-gray-200 rounded animate-pulse w-24"></div>
-                      <div className="h-12 bg-gray-200 rounded animate-pulse w-full"></div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <div className="h-5 bg-gray-200 rounded animate-pulse w-24"></div>
-                      <div className="h-12 bg-gray-200 rounded animate-pulse w-full"></div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <div className="h-5 bg-gray-200 rounded animate-pulse w-32"></div>
-                      <div className="h-12 bg-gray-200 rounded animate-pulse w-full"></div>
-                    </div>
-
-                    <div className="h-14 bg-gray-200 rounded animate-pulse w-full"></div>
-
-                    <div className="space-y-1">
-                      <div className="h-3 bg-gray-200 rounded animate-pulse w-full"></div>
-                      <div className="h-3 bg-gray-200 rounded animate-pulse w-3/4 mx-auto"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
-
-        {/* Hidden Image for Loading */}
         <div className="hidden">
           <Image
             src="/ess-logo-light.png"
@@ -262,23 +175,7 @@ export default function HVACPage() {
   if (formSubmitted) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
-        {/* Header */}
-        <header className="bg-white shadow-sm">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex justify-center">
-              <Image
-                src="/ess-logo-light.png"
-                alt="Engineered Success Sales"
-                width={400}
-                height={200}
-                className="h-12 sm:h-14 md:h-16 w-auto max-w-full"
-                priority
-              />
-            </div>
-          </div>
-        </header>
-
-        {/* Success State */}
+        <Header />
         <main className="container mx-auto px-4 py-16">
           <div className="max-w-2xl mx-auto text-center">
             <div className="mb-8">
@@ -302,8 +199,6 @@ export default function HVACPage() {
             </div>
           </div>
         </main>
-
-        {/* Footer */}
         <footer className="bg-blue-900 text-white py-6 mt-16" style={{ backgroundColor: "#003366" }}>
           <div className="container mx-auto px-4 text-center">
             <p style={{ fontFamily: "Roboto, sans-serif", color: "#FFFFFF" }}>
@@ -317,27 +212,11 @@ export default function HVACPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-center">
-            <Image
-              src="/ess-logo-light.png"
-              alt="Engineered Success Sales"
-              width={400}
-              height={200}
-              className="h-12 sm:h-14 md:h-16 w-auto max-w-full"
-              priority
-            />
-          </div>
-        </div>
-      </header>
+      <Header />
 
-      {/* Hero Section */}
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Content */}
             <div className="space-y-8">
               <div className="space-y-4">
                 <h1
@@ -369,7 +248,6 @@ export default function HVACPage() {
                 </p>
               </div>
 
-              {/* Key Benefits */}
               <div className="space-y-4">
                 {[
                   "Sell system replacements instead of just repairs",
@@ -391,9 +269,22 @@ export default function HVACPage() {
                   </div>
                 ))}
               </div>
+
+              {/* CTA Button after benefits */}
+              <div className="pt-4">
+                <Button
+                  onClick={() => {
+                    trackCalendlyClick()
+                    window.open("https://calendly.com/essgrowth/30min", "_blank")
+                  }}
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-6 py-4 text-base sm:text-lg shadow-lg transition-transform active:scale-[0.97] w-full sm:w-auto"
+                  style={{ fontFamily: "Montserrat, sans-serif" }}
+                >
+                  🌡️ Get Your HVAC Sales System Now
+                </Button>
+              </div>
             </div>
 
-            {/* Right Column - Form */}
             <div className="lg:pl-8">
               <Card className="shadow-2xl border-0">
                 <CardHeader className="text-center pb-6">
@@ -515,7 +406,6 @@ export default function HVACPage() {
         </div>
       </main>
 
-      {/* Benefits Section */}
       <section className="bg-white py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
@@ -541,7 +431,6 @@ export default function HVACPage() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {/* Benefit Card 1 */}
               <Card className="text-center p-6 shadow-lg border-0 hover:shadow-xl transition-shadow">
                 <CardContent className="pt-6">
                   <div className="mb-4 flex justify-center">
@@ -568,7 +457,6 @@ export default function HVACPage() {
                 </CardContent>
               </Card>
 
-              {/* Benefit Card 2 */}
               <Card className="text-center p-6 shadow-lg border-0 hover:shadow-xl transition-shadow">
                 <CardContent className="pt-6">
                   <div className="mb-4 flex justify-center">
@@ -595,7 +483,6 @@ export default function HVACPage() {
                 </CardContent>
               </Card>
 
-              {/* Benefit Card 3 */}
               <Card className="text-center p-6 shadow-lg border-0 hover:shadow-xl transition-shadow">
                 <CardContent className="pt-6">
                   <div className="mb-4 flex justify-center">
@@ -622,7 +509,6 @@ export default function HVACPage() {
                 </CardContent>
               </Card>
 
-              {/* Benefit Card 4 */}
               <Card className="text-center p-6 shadow-lg border-0 hover:shadow-xl transition-shadow">
                 <CardContent className="pt-6">
                   <div className="mb-4 flex justify-center">
@@ -649,11 +535,24 @@ export default function HVACPage() {
                 </CardContent>
               </Card>
             </div>
+
+            {/* CTA Button after benefits section */}
+            <div className="text-center mt-12">
+              <Button
+                onClick={() => {
+                  trackCalendlyClick()
+                  window.open("https://calendly.com/essgrowth/30min", "_blank")
+                }}
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-6 py-4 text-base sm:text-lg shadow-lg transition-transform active:scale-[0.97] w-full sm:w-auto"
+                style={{ fontFamily: "Montserrat, sans-serif" }}
+              >
+                ❄️ Transform Your HVAC Business Today
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-blue-900 text-white py-6" style={{ backgroundColor: "#003366" }}>
         <div className="container mx-auto px-4 text-center">
           <p style={{ fontFamily: "Roboto, sans-serif", color: "#FFFFFF" }}>

@@ -12,6 +12,7 @@ import Image from "next/image"
 import { LoadingProgress } from "./components/loading-progress"
 import { useConversionTracking } from "./hooks/use-conversion-tracking"
 import { Header } from "@/components/header"
+import { analytics } from "./lib/analytics"
 
 export default function DogWalkerPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -94,6 +95,14 @@ export default function DogWalkerPage() {
       return () => timers.forEach(clearTimeout)
     }
   }, [hasError, retryCount])
+
+  useEffect(() => {
+    // Track page view when component mounts
+    analytics.track({
+      page: "dog-walker",
+      event: "page_view",
+    })
+  }, [])
 
   const handleLogoLoad = () => {
     setLogoLoaded(true)

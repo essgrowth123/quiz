@@ -12,6 +12,7 @@ import Image from "next/image"
 import { LoadingProgress } from "./components/loading-progress"
 import { useConversionTracking } from "./hooks/use-conversion-tracking"
 import { Header } from "@/components/header"
+import { analytics } from "./lib/analytics"
 
 export default function MedicalPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -94,6 +95,14 @@ export default function MedicalPage() {
       return () => timers.forEach(clearTimeout)
     }
   }, [hasError, retryCount])
+
+  useEffect(() => {
+    // Track page view when component mounts
+    analytics.track({
+      page: "medical",
+      event: "page_view",
+    })
+  }, [])
 
   const handleLogoLoad = () => {
     setLogoLoaded(true)
@@ -320,6 +329,32 @@ export default function MedicalPage() {
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
       <Header />
 
+      {/* Hero Title Section */}
+      <div
+        className="bg-gradient-to-r from-blue-900 to-blue-800 py-12"
+        style={{ background: "linear-gradient(135deg, #003366 0%, #004080 100%)" }}
+      >
+        <div className="container mx-auto px-4 text-center">
+          <h1
+            className="text-4xl lg:text-5xl font-bold text-white mb-4"
+            style={{
+              fontFamily: "Oswald, sans-serif",
+            }}
+          >
+            GET MORE HIGH-VALUE PATIENTS
+          </h1>
+          <p
+            className="text-xl text-blue-100 max-w-3xl mx-auto"
+            style={{
+              fontFamily: "Roboto, sans-serif",
+            }}
+          >
+            Stop struggling with empty appointment slots. Fill your schedule with quality patients who value your
+            expertise.
+          </p>
+        </div>
+      </div>
+
       {/* Hero Section */}
       <main className="container mx-auto px-4 py-16">
         <div className="max-w-6xl mx-auto">
@@ -327,7 +362,7 @@ export default function MedicalPage() {
             {/* Left Column - Content */}
             <div className="space-y-8">
               <div className="space-y-4">
-                <h1
+                <h2
                   className="text-4xl lg:text-5xl font-bold leading-tight"
                   style={{
                     fontFamily: "Oswald, sans-serif",
@@ -345,7 +380,7 @@ export default function MedicalPage() {
                     Grow
                   </span>{" "}
                   Your Patient Base
-                </h1>
+                </h2>
 
                 <p
                   className="text-xl leading-relaxed"

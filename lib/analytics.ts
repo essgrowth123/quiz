@@ -120,6 +120,7 @@ class AnalyticsService {
     this.loadBulkOperations()
     this.initializeDefaultCategories()
     this.initializeDefaultTemplates()
+    this.initializeSampleData() // Add this line
   }
 
   private generateSessionId(): string {
@@ -270,6 +271,100 @@ class AnalyticsService {
     })
 
     this.saveCategories()
+
+    // Generate sample analytics data for testing
+    this.initializeSampleData()
+  }
+
+  private initializeSampleData() {
+    if (this.events.length === 0) {
+      const sampleEvents: ConversionEvent[] = [
+        // Automotive category
+        { page: "ford", event: "page_view", timestamp: Date.now() - 86400000 },
+        { page: "ford", event: "page_view", timestamp: Date.now() - 82800000 },
+        {
+          page: "ford",
+          event: "form_submit",
+          timestamp: Date.now() - 82800000,
+          formData: { name: "John Doe", email: "john@example.com" },
+        },
+        { page: "car-detailing", event: "page_view", timestamp: Date.now() - 72000000 },
+        { page: "car-detailing", event: "page_view", timestamp: Date.now() - 68400000 },
+
+        // Healthcare category
+        { page: "medical", event: "page_view", timestamp: Date.now() - 64800000 },
+        { page: "medical", event: "page_view", timestamp: Date.now() - 61200000 },
+        {
+          page: "medical",
+          event: "form_submit",
+          timestamp: Date.now() - 61200000,
+          formData: { name: "Jane Smith", email: "jane@example.com" },
+        },
+        { page: "dentist", event: "page_view", timestamp: Date.now() - 57600000 },
+        { page: "dentist", event: "page_view", timestamp: Date.now() - 54000000 },
+        {
+          page: "dentist",
+          event: "form_submit",
+          timestamp: Date.now() - 54000000,
+          formData: { name: "Mike Johnson", email: "mike@example.com" },
+        },
+
+        // Home Services category
+        { page: "hvac", event: "page_view", timestamp: Date.now() - 50400000 },
+        { page: "hvac", event: "page_view", timestamp: Date.now() - 46800000 },
+        { page: "hvac", event: "page_view", timestamp: Date.now() - 43200000 },
+        { page: "home-cleaning", event: "page_view", timestamp: Date.now() - 39600000 },
+        {
+          page: "home-cleaning",
+          event: "form_submit",
+          timestamp: Date.now() - 39600000,
+          formData: { name: "Sarah Wilson", email: "sarah@example.com" },
+        },
+
+        // Personal Services category
+        { page: "barber", event: "page_view", timestamp: Date.now() - 36000000 },
+        { page: "barber", event: "page_view", timestamp: Date.now() - 32400000 },
+        { page: "personal-trainer", event: "page_view", timestamp: Date.now() - 28800000 },
+        {
+          page: "personal-trainer",
+          event: "form_submit",
+          timestamp: Date.now() - 28800000,
+          formData: { name: "Tom Brown", email: "tom@example.com" },
+        },
+
+        // Pet Services category
+        { page: "dog-walker", event: "page_view", timestamp: Date.now() - 25200000 },
+        { page: "dog-training", event: "page_view", timestamp: Date.now() - 21600000 },
+        { page: "dog-training", event: "page_view", timestamp: Date.now() - 18000000 },
+
+        // Real Estate category
+        { page: "real-estate", event: "page_view", timestamp: Date.now() - 14400000 },
+        { page: "real-estate", event: "page_view", timestamp: Date.now() - 10800000 },
+        {
+          page: "real-estate",
+          event: "form_submit",
+          timestamp: Date.now() - 10800000,
+          formData: { name: "Lisa Davis", email: "lisa@example.com" },
+        },
+
+        // Transportation category
+        { page: "limo", event: "page_view", timestamp: Date.now() - 7200000 },
+        { page: "limo", event: "page_view", timestamp: Date.now() - 3600000 },
+
+        // Trades category
+        { page: "blue-collar", event: "page_view", timestamp: Date.now() - 1800000 },
+        {
+          page: "blue-collar",
+          event: "form_submit",
+          timestamp: Date.now() - 1800000,
+          formData: { name: "Bob Miller", email: "bob@example.com" },
+        },
+      ]
+
+      this.events = sampleEvents
+      this.saveEvents()
+      console.log("📊 Sample analytics data initialized")
+    }
   }
 
   private initializeDefaultTemplates() {
@@ -1403,6 +1498,106 @@ export default function ${pageName
     const sessionStart = Number.parseInt(this.sessionId.split("_")[1])
     const seconds = Math.round((timestamp - sessionStart) / 1000)
     return `${seconds} seconds`
+  }
+
+  // ------------------------------------------------------------------
+  // 📊  Aggregate traffic & conversion data by category and page
+  // ------------------------------------------------------------------
+  getConversionStats() {
+    type PageStats = { views: number; submissions: number; conversionRate: number }
+    type CategoryStats = {
+      category: PageCategory
+      pages: Record<string, PageStats>
+      totalViews: number
+      totalSubmissions: number
+      avgConversionRate: number
+    }
+
+    // Default pages mapped to their default categories
+    const defaultPageCategories: Record<string, string> = {
+      "blue-collar": "trades",
+      ford: "automotive",
+      "automotive-dealership": "automotive",
+      "car-detailing": "automotive",
+      limo: "transportation",
+      "limo-service": "transportation",
+      "real-estate": "real-estate",
+      hvac: "home-services",
+      "home-cleaning": "home-services",
+      medical: "healthcare",
+      dentist: "healthcare",
+      "dog-walker": "pet-services",
+      "dog-training": "pet-services",
+      "personal-trainer": "personal-services",
+      barber: "personal-services",
+    }
+
+    // Combine default & promoted pages
+    const allKnownPages = new Set([...Object.keys(defaultPageCategories), ...Array.from(this.promotedPages.keys())])
+
+    // Initialise category stats map
+    const categoryStats: Record<string, CategoryStats> = {}
+    this.categories.forEach((category) => {
+      categoryStats[category.id] = {
+        category,
+        pages: {},
+        totalViews: 0,
+        totalSubmissions: 0,
+        avgConversionRate: 0,
+      }
+    })
+
+    // Unknown pages bucket
+    const unknownPages: Record<string, PageStats> = {}
+
+    // Walk every stored event
+    this.events.forEach((event) => {
+      if (allKnownPages.has(event.page)) {
+        // Get the category for this page (promoted wins, else default)
+        const promoted = this.promotedPages.get(event.page)
+        const categoryId = promoted?.categoryId || defaultPageCategories[event.page] || "other"
+
+        // Initialise page stats lazily
+        if (!categoryStats[categoryId].pages[event.page]) {
+          categoryStats[categoryId].pages[event.page] = { views: 0, submissions: 0, conversionRate: 0 }
+        }
+
+        if (event.event === "page_view") {
+          categoryStats[categoryId].pages[event.page].views++
+          categoryStats[categoryId].totalViews++
+        } else if (event.event === "form_submit") {
+          categoryStats[categoryId].pages[event.page].submissions++
+          categoryStats[categoryId].totalSubmissions++
+        }
+      } else {
+        // Track completely unknown pages
+        if (!unknownPages[event.page]) {
+          unknownPages[event.page] = { views: 0, submissions: 0, conversionRate: 0 }
+        }
+        if (event.event === "page_view") unknownPages[event.page].views++
+        if (event.event === "form_submit") unknownPages[event.page].submissions++
+      }
+    })
+
+    // Calculate conversion rates
+    Object.values(categoryStats).forEach((cat) => {
+      let totalRate = 0
+      let counted = 0
+      Object.values(cat.pages).forEach((p) => {
+        p.conversionRate = p.views ? Math.round((p.submissions / p.views) * 100 * 100) / 100 : 0
+        if (p.views) {
+          totalRate += p.conversionRate
+          counted++
+        }
+      })
+      cat.avgConversionRate = counted ? Math.round((totalRate / counted) * 100) / 100 : 0
+    })
+
+    Object.values(unknownPages).forEach((p) => {
+      p.conversionRate = p.views ? Math.round((p.submissions / p.views) * 100 * 100) / 100 : 0
+    })
+
+    return { categoryStats, unknownPages }
   }
 }
 

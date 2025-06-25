@@ -12,6 +12,7 @@ import Image from "next/image"
 import { LoadingProgress } from "./components/loading-progress"
 import { useConversionTracking } from "./hooks/use-conversion-tracking"
 import { Header } from "@/components/header"
+import { analytics } from "./lib/analytics"
 
 export default function DogTrainingPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -127,6 +128,14 @@ export default function DogTrainingPage() {
       [e.target.name]: e.target.value,
     })
   }
+
+  useEffect(() => {
+    // Track page view when component mounts
+    analytics.track({
+      page: "dog-training",
+      event: "page_view",
+    })
+  }, [])
 
   if (isLoading) {
     return (

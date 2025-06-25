@@ -11,6 +11,8 @@ import { CheckCircle, TrendingUp, DollarSign, Users, Award } from "lucide-react"
 import Image from "next/image"
 import { LoadingProgress } from "./components/loading-progress"
 import { useConversionTracking } from "./hooks/use-conversion-tracking"
+import { Header } from "@/components/header"
+import { analytics } from "./lib/analytics"
 
 export default function AutomotiveDealershipPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
@@ -74,6 +76,14 @@ export default function AutomotiveDealershipPage() {
       return () => clearTimeout(minLoadingTimer)
     }
   }, [logoLoaded, contentReady, hasError])
+
+  useEffect(() => {
+    // Track page view when component mounts
+    analytics.track({
+      page: "ford",
+      event: "page_view",
+    })
+  }, [])
 
   // Simulate progressive loading steps
   useEffect(() => {
@@ -292,21 +302,7 @@ export default function AutomotiveDealershipPage() {
   if (formSubmitted) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
-        {/* Header */}
-        <header className="bg-white shadow-sm">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex justify-center">
-              <Image
-                src="/ess-logo-light.png"
-                alt="Engineered Success Sales"
-                width={400}
-                height={200}
-                className="h-12 sm:h-14 md:h-16 w-auto max-w-full"
-                priority
-              />
-            </div>
-          </div>
-        </header>
+        <Header />
 
         {/* Success State */}
         <main className="container mx-auto px-4 py-16">
@@ -347,21 +343,7 @@ export default function AutomotiveDealershipPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white to-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex justify-center">
-            <Image
-              src="/ess-logo-light.png"
-              alt="Engineered Success Sales"
-              width={400}
-              height={200}
-              className="h-12 sm:h-14 md:h-16 w-auto max-w-full"
-              priority
-            />
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <main className="container mx-auto px-4 py-16">
@@ -420,6 +402,20 @@ export default function AutomotiveDealershipPage() {
                     </p>
                   </div>
                 ))}
+              </div>
+
+              {/* CTA Button after benefits */}
+              <div className="pt-4">
+                <Button
+                  onClick={() => {
+                    trackCalendlyClick()
+                    window.open("https://calendly.com/essgrowth/30min", "_blank")
+                  }}
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-8 py-4 text-lg shadow-lg transition-transform active:scale-[0.97]"
+                  style={{ fontFamily: "Montserrat, sans-serif" }}
+                >
+                  📞 Get Your Free Sales Training Consultation
+                </Button>
               </div>
             </div>
 
@@ -679,6 +675,20 @@ export default function AutomotiveDealershipPage() {
                   </p>
                 </CardContent>
               </Card>
+            </div>
+
+            {/* CTA Button after benefits section */}
+            <div className="text-center mt-12">
+              <Button
+                onClick={() => {
+                  trackCalendlyClick()
+                  window.open("https://calendly.com/essgrowth/30min", "_blank")
+                }}
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-8 py-4 text-lg shadow-lg transition-transform active:scale-[0.97]"
+                style={{ fontFamily: "Montserrat, sans-serif" }}
+              >
+                🚗 Start Transforming Your Sales Team Today
+              </Button>
             </div>
           </div>
         </div>
