@@ -50,19 +50,17 @@ export function HeroSection({
   const isFormValid = formData.name && formData.email && formData.business
 
   return (
-    <section className="bg-gradient-to-br from-white-smoke to-white homepage-section">
+    <section className="hero bg-gradient-to-br from-ess-blue to-black-charcoal homepage-section">
       <div className="container mx-auto container-padding">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left Column - Content */}
             <div className="mobile-center space-y-8">
-              {/* Headline with Alert Emoji */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-black-charcoal font-oswald">
-                🚨 If You're Chasing Leads or Losing Quotes—This Audit Will Show You Why
-              </h1>
+              {/* Clean Hero Heading */}
+              <h1 className="hero-heading">Ready to transform your sales process and boost conversions?</h1>
 
               {/* Subheadline */}
-              <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-steel-grey max-w-2xl mx-auto lg:mx-0">
+              <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-white-smoke max-w-2xl mx-auto lg:mx-0 opacity-90">
                 Whether you're in trades, real estate, med spas, or law—you shouldn't be guessing where your sales are
                 leaking. Our 30-minute ESS Sales Leak Audit ($297 value) gives you clarity, not fluff.
               </p>
@@ -78,19 +76,19 @@ export function HeroSection({
               <div className="space-y-4 max-w-2xl mx-auto lg:mx-0 pt-4">
                 <div className="flex items-start space-x-3 text-left">
                   <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0 text-construction-yellow" />
-                  <p className="text-base sm:text-lg text-steel-grey">
+                  <p className="text-base sm:text-lg text-white-smoke opacity-90">
                     <strong>Designed for service businesses:</strong> from contractors to closers
                   </p>
                 </div>
                 <div className="flex items-start space-x-3 text-left">
                   <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0 text-construction-yellow" />
-                  <p className="text-base sm:text-lg text-steel-grey">
+                  <p className="text-base sm:text-lg text-white-smoke opacity-90">
                     <strong>No tech stack required</strong>—just bring how you sell today
                   </p>
                 </div>
                 <div className="flex items-start space-x-3 text-left">
                   <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0 text-construction-yellow" />
-                  <p className="text-base sm:text-lg text-steel-grey">
+                  <p className="text-base sm:text-lg text-white-smoke opacity-90">
                     <strong>We'll show you what's broken</strong> and what to fix next
                   </p>
                 </div>
@@ -100,9 +98,11 @@ export function HeroSection({
             {/* Right Column - Lead Capture Form */}
             <div className="w-full">
               <Card className="shadow-2xl border-0 bg-white">
-                <CardHeader className="text-center pb-6 bg-ess-blue text-white rounded-t-lg">
-                  <CardTitle className="text-xl sm:text-2xl font-bold font-oswald">{formTitle}</CardTitle>
-                  <CardDescription className="text-base sm:text-lg text-blue-100">{formDescription}</CardDescription>
+                <CardHeader className="text-center pb-6 bg-white">
+                  <CardTitle className="text-xl sm:text-2xl font-bold font-oswald text-black-charcoal">
+                    {formTitle}
+                  </CardTitle>
+                  <CardDescription className="text-base sm:text-lg text-steel-grey">{formDescription}</CardDescription>
                 </CardHeader>
                 <CardContent className="p-6 lg:p-8">
                   <form onSubmit={handleSubmit} className="space-y-6">
