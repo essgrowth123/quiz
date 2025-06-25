@@ -18,8 +18,8 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: "Engineered Success Sales - Digital Marketing Experts",
-  description: "We help businesses grow through proven digital marketing strategies.",
+  title: "Engineered Success Sales",
+  description: "Sales training that actually works",
     generator: 'v0.dev'
 }
 
@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
         {/* Google Analytics - Replace G-XXXXXXXXXX with your actual Measurement ID */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" strategy="afterInteractive" />
@@ -88,7 +88,7 @@ export default function RootLayout({
           />
         </noscript>
       </head>
-      <body className={`${oswald.variable} ${roboto.variable} font-roboto`}>
+      <body className={`${oswald.variable} ${roboto.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
