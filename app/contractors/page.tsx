@@ -3,6 +3,8 @@ import { Footer } from "@/components/layout/footer"
 import { HeroSection } from "@/components/sections/hero-section"
 import { BenefitsSection } from "@/components/sections/benefits-section"
 import { TestimonialsSection } from "@/components/sections/testimonials-section"
+import { BreadcrumbNav } from "@/components/ui/breadcrumb-nav"
+import { BackToIndustries } from "@/components/ui/back-to-industries"
 import { TrendingUp, DollarSign, Users, Hammer } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -13,6 +15,12 @@ export const metadata: Metadata = {
 }
 
 export default function ContractorsPage() {
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Industries", href: "/#industries" },
+    { label: "Contractors & Home Services" },
+  ]
+
   const benefits = [
     {
       icon: TrendingUp,
@@ -60,6 +68,9 @@ export default function ContractorsPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
+      <BreadcrumbNav items={breadcrumbItems} />
+
+      <BackToIndustries />
 
       <HeroSection
         industry="contractors"

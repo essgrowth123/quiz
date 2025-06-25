@@ -2,6 +2,7 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { HeroSection } from "@/components/sections/hero-section"
 import { BenefitsSection } from "@/components/sections/benefits-section"
+import { IndustrySelection } from "@/components/sections/industry-selection"
 import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { TrendingUp, DollarSign, Users, Target } from "lucide-react"
 import type { Metadata } from "next"
@@ -79,6 +80,10 @@ export default function HomePage() {
         subtitle="Our proven strategies help business owners convert more leads, charge premium rates, and build lasting customer relationships."
         benefits={benefits}
       />
+
+      <div id="industries">
+        <IndustrySelection />
+      </div>
 
       <TestimonialsSection title="Success Stories from Real Business Owners" testimonials={testimonials} />
 

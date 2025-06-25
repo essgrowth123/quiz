@@ -1,12 +1,10 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
 import { CheckCircle } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -46,62 +44,70 @@ export function HeroSection({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Client-side redirect instead of passing a server function
     router.push("/book")
   }
 
   const isFormValid = formData.name && formData.email && formData.business
 
   return (
-    <section className="bg-gradient-to-br from-white to-gray-50 section-spacing">
+    <section className="bg-gradient-to-br from-white-smoke to-white homepage-section">
       <div className="container mx-auto container-padding">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left Column - Content */}
-            <div className="mobile-center space-y-6 lg:space-y-8">
-              {/* Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-gray-900">
-                {headline}
+            <div className="mobile-center space-y-8">
+              {/* Headline with Alert Emoji */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-black-charcoal font-oswald">
+                🚨 If You're Chasing Leads or Losing Quotes—This Audit Will Show You Why
               </h1>
 
               {/* Subheadline */}
-              <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-gray-600 max-w-2xl mx-auto lg:mx-0">
-                {subheadline}
+              <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-steel-grey max-w-2xl mx-auto lg:mx-0">
+                Whether you're in trades, real estate, med spas, or law—you shouldn't be guessing where your sales are
+                leaking. Our 30-minute ESS Sales Leak Audit ($297 value) gives you clarity, not fluff.
               </p>
 
-              {/* Benefits List */}
-              <div className="space-y-4 max-w-2xl mx-auto lg:mx-0">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start space-x-3 text-left">
-                    <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0 text-yellow-500" />
-                    <p className="text-base sm:text-lg text-gray-700">{benefit}</p>
-                  </div>
-                ))}
+              {/* Primary CTA Button */}
+              <div className="pt-4">
+                <Link href="/book" className="btn-primary btn-mobile-full text-lg px-8 py-4 inline-block">
+                  📞 Book My Free Audit – ($297 Value)
+                </Link>
               </div>
 
-              {/* Primary CTA - Desktop */}
-              <div className="hidden lg:block pt-4">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-white font-bold text-lg px-8 py-4"
-                  asChild
-                >
-                  <Link href="/book">📞 Book My Free Audit – ($297 Value)</Link>
-                </Button>
+              {/* Quick Benefits Bullets */}
+              <div className="space-y-4 max-w-2xl mx-auto lg:mx-0 pt-4">
+                <div className="flex items-start space-x-3 text-left">
+                  <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0 text-construction-yellow" />
+                  <p className="text-base sm:text-lg text-steel-grey">
+                    <strong>Designed for service businesses:</strong> from contractors to closers
+                  </p>
+                </div>
+                <div className="flex items-start space-x-3 text-left">
+                  <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0 text-construction-yellow" />
+                  <p className="text-base sm:text-lg text-steel-grey">
+                    <strong>No tech stack required</strong>—just bring how you sell today
+                  </p>
+                </div>
+                <div className="flex items-start space-x-3 text-left">
+                  <CheckCircle className="w-6 h-6 mt-1 flex-shrink-0 text-construction-yellow" />
+                  <p className="text-base sm:text-lg text-steel-grey">
+                    <strong>We'll show you what's broken</strong> and what to fix next
+                  </p>
+                </div>
               </div>
             </div>
 
             {/* Right Column - Lead Capture Form */}
             <div className="w-full">
               <Card className="shadow-2xl border-0 bg-white">
-                <CardHeader className="text-center pb-6">
-                  <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900">{formTitle}</CardTitle>
-                  <CardDescription className="text-base sm:text-lg text-gray-600">{formDescription}</CardDescription>
+                <CardHeader className="text-center pb-6 bg-ess-blue text-white rounded-t-lg">
+                  <CardTitle className="text-xl sm:text-2xl font-bold font-oswald">{formTitle}</CardTitle>
+                  <CardDescription className="text-base sm:text-lg text-blue-100">{formDescription}</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="p-6 lg:p-8">
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name" className="text-base font-medium text-center block text-gray-700">
+                      <Label htmlFor="name" className="text-base font-medium text-steel-grey">
                         Your Name
                       </Label>
                       <Input
@@ -111,13 +117,13 @@ export function HeroSection({
                         required
                         value={formData.name}
                         onChange={handleInputChange}
-                        className="h-12 text-base border-2 focus:border-yellow-500 text-center"
+                        className="h-12 text-base border-2 focus:border-construction-yellow"
                         placeholder="Enter your full name"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-base font-medium text-center block text-gray-700">
+                      <Label htmlFor="email" className="text-base font-medium text-steel-grey">
                         Your Email
                       </Label>
                       <Input
@@ -127,13 +133,13 @@ export function HeroSection({
                         required
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="h-12 text-base border-2 focus:border-yellow-500 text-center"
+                        className="h-12 text-base border-2 focus:border-construction-yellow"
                         placeholder="Enter your email address"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="business" className="text-base font-medium text-center block text-gray-700">
+                      <Label htmlFor="business" className="text-base font-medium text-steel-grey">
                         {businessLabel}
                       </Label>
                       <Input
@@ -143,36 +149,25 @@ export function HeroSection({
                         required
                         value={formData.business}
                         onChange={handleInputChange}
-                        className="h-12 text-base border-2 focus:border-yellow-500 text-center"
+                        className="h-12 text-base border-2 focus:border-construction-yellow"
                         placeholder={`Enter your ${businessLabel.toLowerCase()}`}
                       />
                     </div>
 
-                    <Button
+                    <button
                       type="submit"
                       disabled={!isFormValid}
-                      className="w-full bg-primary hover:bg-primary/90 text-white font-bold text-base px-6 py-4 disabled:opacity-50"
+                      className="btn-primary w-full text-base px-6 py-4 disabled:opacity-50"
                     >
                       📩 Get My Free Sales Blueprint
-                    </Button>
+                    </button>
 
-                    <p className="text-sm text-center leading-relaxed text-gray-600">
+                    <p className="text-sm text-center leading-relaxed text-steel-grey">
                       By submitting, you agree to receive communications from ESS. We respect your privacy.
                     </p>
                   </form>
                 </CardContent>
               </Card>
-
-              {/* Primary CTA - Mobile */}
-              <div className="lg:hidden mt-8 text-center">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-white font-bold text-lg px-8 py-4 w-full sm:w-auto"
-                  asChild
-                >
-                  <Link href="/book">📞 Book My Free Audit – ($297 Value)</Link>
-                </Button>
-              </div>
             </div>
           </div>
         </div>
