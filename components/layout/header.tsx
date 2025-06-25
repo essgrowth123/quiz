@@ -11,18 +11,11 @@ const industries = [
   { name: "Contractors", href: "/contractors" },
   { name: "Auto Detailing", href: "/auto-detailing" },
   { name: "Landscaping", href: "/landscaping" },
-  { name: "HVAC", href: "/hvac" },
-  { name: "Medical", href: "/medical" },
-  { name: "Automotive", href: "/automotive" },
 ]
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-
-  const handleCTAClick = () => {
-    window.open("https://calendly.com/essgrowth/30min", "_blank")
-  }
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -72,8 +65,8 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:block">
-            <Button variant="primary" size="lg" onClick={handleCTAClick} className="text-sm">
-              📞 Book My Free Audit – ($297 Value)
+            <Button variant="primary" size="lg" asChild>
+              <Link href="/book">📞 Book My Free Audit – ($297 Value)</Link>
             </Button>
           </div>
 
@@ -102,8 +95,8 @@ export function Header() {
               </div>
 
               <div className="px-4 pt-4 border-t">
-                <Button variant="primary" size="xl" onClick={handleCTAClick} className="w-full text-sm">
-                  📞 Book My Free Audit – ($297 Value)
+                <Button variant="primary" size="xl" className="w-full" asChild>
+                  <Link href="/book">📞 Book My Free Audit – ($297 Value)</Link>
                 </Button>
               </div>
             </div>
