@@ -2,10 +2,23 @@ import type React from "react"
 import type { Metadata } from "next"
 import Script from "next/script"
 import "./globals.css"
+import { Oswald, Roboto } from "next/font/google"
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  variable: "--font-oswald",
+  weight: ["400", "600", "700"],
+})
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  variable: "--font-roboto",
+  weight: ["300", "400", "500", "700"],
+})
 
 export const metadata: Metadata = {
-  title: "E.S.S.",
-  description: "Elite Sales Solutions - Professional Landing Pages",
+  title: "Engineered Success Sales - Sales Training & Consulting",
+  description: "Professional sales training and consulting services for businesses across all industries.",
   generator: "v0.dev",
   icons: {
     icon: [
@@ -86,7 +99,7 @@ export default function RootLayout({
           />
         </noscript>
       </head>
-      <body>
+      <body className={`${oswald.variable} ${roboto.variable} font-roboto`}>
         {children}
 
         {/* Tracking Debug Panel - Remove in production */}
