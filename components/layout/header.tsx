@@ -24,7 +24,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/placeholder.svg?height=60&width=200&text=ESS+Logo"
+              src="/ess-logo-light.png"
               alt="Engineered Success Sales"
               width={200}
               height={60}
@@ -65,7 +65,7 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:block">
-            <Button variant="primary" size="lg" asChild>
+            <Button className="bg-primary hover:bg-primary/90 text-white font-bold px-4 py-2 text-sm" asChild>
               <Link href="/book">📞 Book My Free Audit – ($297 Value)</Link>
             </Button>
           </div>
@@ -95,7 +95,7 @@ export function Header() {
               </div>
 
               <div className="px-4 pt-4 border-t">
-                <Button variant="primary" size="xl" className="w-full" asChild>
+                <Button className="bg-primary hover:bg-primary/90 text-white font-bold w-full" asChild>
                   <Link href="/book">📞 Book My Free Audit – ($297 Value)</Link>
                 </Button>
               </div>

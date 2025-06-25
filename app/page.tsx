@@ -2,33 +2,58 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { HeroSection } from "@/components/sections/hero-section"
 import { BenefitsSection } from "@/components/sections/benefits-section"
+import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { TrendingUp, DollarSign, Users, Target } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Sales Training That Actually Works | Engineered Success Sales",
+  description:
+    "Stop losing leads and start closing more deals. Specialized sales training for contractors, real estate agents, and service professionals.",
+}
 
 export default function HomePage() {
   const benefits = [
     {
       icon: TrendingUp,
-      title: "Increase Sales",
-      description: "Proven strategies that help businesses increase their sales by 40-60% within 90 days.",
+      title: "More Qualified Leads",
+      description: "Stop chasing unqualified prospects and attract clients ready to buy.",
       color: "yellow" as const,
     },
     {
       icon: DollarSign,
-      title: "Higher Profits",
-      description: "Learn to sell value instead of competing on price, dramatically improving your profit margins.",
+      title: "Higher Close Rates",
+      description: "Convert more leads into paying customers with proven sales systems.",
       color: "blue" as const,
     },
     {
       icon: Users,
-      title: "Better Teams",
-      description: "Transform your sales team with confidence-building training and proven methodologies.",
+      title: "Premium Pricing",
+      description: "Stop competing on price and start selling value and expertise.",
       color: "yellow" as const,
     },
     {
       icon: Target,
-      title: "Consistent Results",
-      description: "Implement systems that deliver predictable, repeatable sales success month after month.",
+      title: "Predictable Revenue",
+      description: "Build systems that generate consistent, predictable income month after month.",
       color: "blue" as const,
+    },
+  ]
+
+  const testimonials = [
+    {
+      name: "Mike Rodriguez",
+      title: "Contractor, Rodriguez Construction",
+      content:
+        "I stopped bidding against low-ballers and started winning $50K+ projects. My profit margins doubled in 4 months.",
+      image: "/placeholder.svg?height=80&width=80&text=MR",
+    },
+    {
+      name: "Sarah Mitchell",
+      title: "Real Estate Agent",
+      content:
+        "ESS helped me triple my listings in 6 months. I went from chasing leads to having clients call me directly.",
+      image: "/placeholder.svg?height=80&width=80&text=SM",
     },
   ]
 
@@ -38,24 +63,26 @@ export default function HomePage() {
 
       <HeroSection
         industry="general"
-        headline="Transform Your Sales Team Into Revenue-Generating Machines"
-        subheadline="Stop losing deals to competitors who charge less. Our proven sales training helps businesses across all industries sell value, build trust, and close more deals at premium prices."
+        headline="Stop Losing Leads. Start Closing More Deals."
+        subheadline="Specialized sales training for contractors, real estate agents, and service professionals who want to stop competing on price and start building profitable, sustainable businesses."
         benefits={[
-          "Increase your sales by 40-60% within 90 days",
+          "Convert more leads into paying customers",
           "Stop competing on price and start selling value",
-          "Build a confident, high-performing sales team",
-          "Create predictable, repeatable sales success",
+          "Build predictable revenue systems that work",
+          "Position yourself as the expert in your field",
         ]}
         formTitle="Ready to Transform Your Sales?"
-        formDescription="Get the sales training that turns prospects into paying customers."
+        formDescription="Get the sales training that helps you sell value, not just price."
         businessLabel="Business Name"
       />
 
       <BenefitsSection
-        title="How We Help Businesses Dominate Their Markets"
-        subtitle="Our proven methodologies have helped thousands of businesses across every industry achieve breakthrough sales results."
+        title="How We Help Service Professionals Build Thriving Businesses"
+        subtitle="Our proven strategies help you attract quality clients, charge premium rates, and build lasting success."
         benefits={benefits}
       />
+
+      <TestimonialsSection title="Success Stories" testimonials={testimonials} />
 
       <Footer />
     </div>

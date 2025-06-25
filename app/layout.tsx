@@ -3,11 +3,12 @@ import type { Metadata } from "next"
 import Script from "next/script"
 import "./globals.css"
 import { Oswald, Roboto } from "next/font/google"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const oswald = Oswald({
   subsets: ["latin"],
   variable: "--font-oswald",
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 })
 
 const roboto = Roboto({
@@ -17,21 +18,9 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: "Engineered Success Sales - Sales Training & Consulting",
-  description: "Professional sales training and consulting services for businesses across all industries.",
-  generator: "v0.dev",
-  icons: {
-    icon: [
-      { url: "/ess-logo-light.png", sizes: "32x32", type: "image/png" },
-      { url: "/ess-logo-light.png", sizes: "16x16", type: "image/png" },
-    ],
-    shortcut: "/ess-logo-light.png",
-    apple: [
-      { url: "/ess-logo-light.png", sizes: "180x180", type: "image/png" },
-      { url: "/ess-logo-light.png", sizes: "152x152", type: "image/png" },
-      { url: "/ess-logo-light.png", sizes: "144x144", type: "image/png" },
-    ],
-  },
+  title: "Engineered Success Sales - Digital Marketing Experts",
+  description: "We help businesses grow through proven digital marketing strategies.",
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -40,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Google Analytics - Replace G-XXXXXXXXXX with your actual Measurement ID */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" strategy="afterInteractive" />
@@ -100,7 +89,9 @@ export default function RootLayout({
         </noscript>
       </head>
       <body className={`${oswald.variable} ${roboto.variable} font-roboto`}>
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
 
         {/* Tracking Debug Panel - Remove in production */}
         <div

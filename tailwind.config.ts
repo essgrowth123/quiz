@@ -11,8 +11,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        oswald: ["var(--font-oswald)", "sans-serif"],
-        roboto: ["var(--font-roboto)", "sans-serif"],
+        oswald: ["var(--font-oswald)"],
+        roboto: ["var(--font-roboto)"],
       },
       colors: {
         background: "hsl(var(--background))",
@@ -32,8 +32,6 @@ const config: Config = {
         secondary: {
           DEFAULT: "#FFCC00",
           foreground: "#000000",
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -42,8 +40,6 @@ const config: Config = {
         accent: {
           DEFAULT: "#003366",
           foreground: "#ffffff",
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -98,7 +94,12 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       spacing: {
-        xl: "1.5rem",
+        "18": "4.5rem",
+        "88": "22rem",
+      },
+      maxWidth: {
+        "8xl": "88rem",
+        "9xl": "96rem",
       },
     },
   },
