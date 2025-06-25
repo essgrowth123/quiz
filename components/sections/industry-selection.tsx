@@ -30,7 +30,7 @@ const industries = [
   },
   {
     title: "More Industries",
-    description: "Serving Doctors, Dentists, Med Spas, Attorneys, Coaches & More",
+    description: "Doctors, Dentists, Med Spas, Attorneys, Coaches & More",
     href: "#who-we-helped",
     emoji: "🏥",
   },
@@ -50,26 +50,28 @@ export function IndustrySelection() {
             </p>
           </div>
 
-          {/* Industry Cards Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-8">
+          {/* Industry Cards Grid - Now with 5 cards */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8 mb-8">
             {industries.map((industry) => (
               <Link key={industry.href} href={industry.href} className="group">
                 <Card className="industry-card h-full border-2 border-transparent group-hover:border-construction-yellow bg-white">
-                  <CardContent className="p-8 lg:p-10 text-center h-full flex flex-col justify-center">
-                    <div className="text-6xl mb-6 icon-hover">{industry.emoji}</div>
-                    <h3 className="text-xl lg:text-2xl font-bold text-black-charcoal mb-4 group-hover:text-ess-blue transition-colors duration-300 font-oswald">
+                  <CardContent className="p-6 lg:p-8 text-center h-full flex flex-col justify-center">
+                    <div className="text-5xl lg:text-6xl mb-4 icon-hover">{industry.emoji}</div>
+                    <h3 className="text-lg lg:text-xl font-bold text-black-charcoal mb-3 group-hover:text-ess-blue transition-colors duration-300 font-oswald">
                       {industry.title}
                     </h3>
-                    <p className="text-steel-grey leading-relaxed text-base lg:text-lg">{industry.description}</p>
+                    <p className="text-steel-grey leading-relaxed text-sm lg:text-base">{industry.description}</p>
                   </CardContent>
                 </Card>
               </Link>
             ))}
           </div>
 
-          {/* Additional Industries Line */}
-          <div className="additional-industries">
-            Also serving: Doctors · Dentists · Med Spas · Attorneys · Pet Services
+          {/* Yellow Banner Line - Backup/Additional */}
+          <div className="text-center">
+            <p className="text-construction-yellow font-medium text-lg">
+              Also serving: Doctors · Dentists · Med Spas · Attorneys · Pet Services
+            </p>
           </div>
         </div>
       </div>
