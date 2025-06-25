@@ -10,6 +10,7 @@ const industries = [
   { name: "Contractors", href: "/contractors" },
   { name: "Auto Detailing", href: "/auto-detailing" },
   { name: "Landscaping", href: "/landscaping" },
+  { name: "More Industries…", href: "/#industries" },
 ]
 
 export function Header() {
@@ -30,15 +31,6 @@ export function Header() {
 
   const closeMenu = () => {
     setIsMenuOpen(false)
-  }
-
-  const scrollToIndustries = () => {
-    const industriesSection = document.getElementById("industries")
-    if (industriesSection) {
-      industriesSection.scrollIntoView({ behavior: "smooth" })
-    }
-    closeDropdown()
-    closeMenu()
   }
 
   return (
@@ -71,18 +63,15 @@ export function Header() {
               {isDropdownOpen && (
                 <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border z-50">
                   <div className="py-2">
-                    <button
-                      onClick={scrollToIndustries}
-                      className="block w-full text-left px-4 py-2 text-sm text-steel-grey hover:bg-white-smoke hover:text-ess-blue transition-colors duration-200"
-                    >
-                      View All Industries
-                    </button>
-                    <div className="border-t border-gray-200 my-1"></div>
-                    {industries.map((industry) => (
+                    {industries.map((industry, index) => (
                       <Link
                         key={industry.href}
                         href={industry.href}
-                        className="block px-4 py-2 text-sm text-steel-grey hover:bg-white-smoke hover:text-ess-blue transition-colors duration-200"
+                        className={`block px-4 py-2 text-sm transition-colors duration-200 ${
+                          index === industries.length - 1
+                            ? "text-construction-yellow font-semibold hover:bg-white-smoke"
+                            : "text-steel-grey hover:bg-white-smoke hover:text-ess-blue"
+                        }`}
                         onClick={closeDropdown}
                       >
                         {industry.name}
@@ -113,17 +102,15 @@ export function Header() {
             <div className="py-4 space-y-4">
               <div className="space-y-2">
                 <p className="font-medium text-white px-4">Industries</p>
-                <button
-                  onClick={scrollToIndustries}
-                  className="block w-full text-left px-6 py-2 text-construction-yellow hover:bg-blue-800 transition-colors duration-200"
-                >
-                  View All Industries
-                </button>
-                {industries.map((industry) => (
+                {industries.map((industry, index) => (
                   <Link
                     key={industry.href}
                     href={industry.href}
-                    className="block px-6 py-2 text-white hover:bg-blue-800 hover:text-construction-yellow transition-colors duration-200"
+                    className={`block px-6 py-2 transition-colors duration-200 ${
+                      index === industries.length - 1
+                        ? "text-construction-yellow font-semibold hover:bg-blue-800"
+                        : "text-white hover:bg-blue-800 hover:text-construction-yellow"
+                    }`}
                     onClick={closeMenu}
                   >
                     {industry.name}

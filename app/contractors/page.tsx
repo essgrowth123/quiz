@@ -6,6 +6,7 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { BreadcrumbNav } from "@/components/ui/breadcrumb-nav"
 import { BackToIndustries } from "@/components/ui/back-to-industries"
 import { TrendingUp, DollarSign, Users, Hammer } from "lucide-react"
+import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -72,13 +73,27 @@ export default function ContractorsPage() {
 
       <BackToIndustries />
 
+      {/* Pain Point Intro */}
+      <section className="py-8 bg-white-smoke">
+        <div className="container mx-auto container-padding">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-lg text-steel-grey leading-relaxed">
+              <strong>Contractors & Home Service Pros:</strong> You're losing jobs to competitors who aren't better
+              craftsmen—they're just better at selling the value of their work. If you're tired of being seen as "just
+              another contractor" and want to command premium rates for quality work, this audit will show you how.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <HeroSection
         industry="contractors"
         headline="For Contractors: Win More High-Value Projects"
         subheadline="Stop losing bids to low-ball competitors. Our specialized training helps contractors sell quality and craftsmanship, win premium projects, and build a reputation that commands top dollar."
         benefits={[
-          "Win more high-ticket home improvement projects",
-          "Stop competing on price and start selling value",
+          "Lock in jobs before prospects ghost you or shop around",
+          "Win more high-ticket home improvement projects consistently",
+          "Stop competing on price and start selling value and expertise",
           "Build trust with homeowners from the first meeting",
           "Handle objections and close deals with confidence",
         ]}
@@ -92,6 +107,25 @@ export default function ContractorsPage() {
         subtitle="Our proven strategies help contractors win quality projects, charge premium rates, and build lasting client relationships."
         benefits={benefits}
       />
+
+      {/* Trust Bar */}
+      <section className="py-8 bg-white-smoke">
+        <div className="container mx-auto container-padding">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-construction-yellow">
+              <p className="text-steel-grey mb-4">
+                <strong>"Finally a sales audit that didn't sound like fluff."</strong>
+              </p>
+              <p className="text-sm text-steel-grey">— Bryan, Contractor</p>
+            </div>
+            <div className="mt-8">
+              <Link href="/book" className="btn-primary text-lg px-8 py-4">
+                📞 Book My Free Audit – ($297 Value)
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <TestimonialsSection title="Contractor Success Stories" testimonials={testimonials} />
 

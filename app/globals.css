@@ -280,3 +280,91 @@ html {
     padding: 80px 0;
   }
 }
+
+/* Final Polish & Spacing */
+.cta-bottom-spacing {
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .cta-bottom-spacing {
+    margin-bottom: 48px;
+  }
+}
+
+/* Testimonial Bar Styles */
+.testimonial-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.testimonial-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Exit Intent Modal */
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  max-width: 480px;
+  margin: 0 auto;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Who We Helped Section */
+.helped-list {
+  list-style: none;
+  padding: 0;
+}
+
+.helped-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(79, 79, 79, 0.1);
+}
+
+.helped-list li:last-child {
+  border-bottom: none;
+}
+
+/* Button Hover Improvements */
+.btn-primary,
+.btn-danger {
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-danger:hover {
+  transform: translateY(-2px);
+}
+
+/* Mobile Button Full Width */
+@media (max-width: 640px) {
+  .btn-mobile-full {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Scrollbar Hide */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}

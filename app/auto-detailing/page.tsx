@@ -6,6 +6,7 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { BreadcrumbNav } from "@/components/ui/breadcrumb-nav"
 import { BackToIndustries } from "@/components/ui/back-to-industries"
 import { TrendingUp, DollarSign, Users, Car } from "lucide-react"
+import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -71,15 +72,29 @@ export default function AutoDetailingPage() {
 
       <BackToIndustries />
 
+      {/* Pain Point Intro */}
+      <section className="py-8 bg-white-smoke">
+        <div className="container mx-auto container-padding">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-lg text-steel-grey leading-relaxed">
+              <strong>Auto Detailing Professionals:</strong> You're competing with $20 car washes when you should be
+              attracting luxury car owners who pay $500-2000+ for perfection. If you're tired of chasing "just looking"
+              leads and want to build a premium detailing business, this audit will show you the way.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <HeroSection
         industry="auto-detailing"
         headline="For Auto Detailing: Premium Services, Premium Prices"
         subheadline="Stop competing with $20 car washes. Our specialized training helps detailing professionals attract luxury car owners who pay premium prices for perfection and protection."
         benefits={[
-          "Attract luxury car owners who value perfection",
+          "Stop chasing 'just looking' leads and attract serious buyers",
+          "Attract luxury car owners who value perfection over price",
           "Charge premium rates for paint correction & ceramic coatings",
-          "Build recurring monthly maintenance clients",
-          "Stop competing with cheap car washes",
+          "Build recurring monthly maintenance clients for steady income",
+          "Position yourself as the expert, not just another detailer",
         ]}
         formTitle="Ready to Build Your Premium Detailing Business?"
         formDescription="Get the system that attracts high-end car enthusiasts."
@@ -91,6 +106,25 @@ export default function AutoDetailingPage() {
         subtitle="Our proven strategies help detailing professionals attract luxury clients and charge premium rates for expert-level service."
         benefits={benefits}
       />
+
+      {/* Trust Bar */}
+      <section className="py-8 bg-white-smoke">
+        <div className="container mx-auto container-padding">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-construction-yellow">
+              <p className="text-steel-grey mb-4">
+                <strong>"I went from $50 wash jobs to $1,500 ceramic coating packages."</strong>
+              </p>
+              <p className="text-sm text-steel-grey">— Carlos, Elite Auto Detailing</p>
+            </div>
+            <div className="mt-8">
+              <Link href="/book" className="btn-primary text-lg px-8 py-4">
+                📞 Book My Free Audit – ($297 Value)
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <TestimonialsSection title="Auto Detailing Success Stories" testimonials={testimonials} />
 

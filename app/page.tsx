@@ -2,8 +2,11 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { HeroSection } from "@/components/sections/hero-section"
 import { BenefitsSection } from "@/components/sections/benefits-section"
+import { WhoWeHelped } from "@/components/sections/who-we-helped"
+import { TestimonialBar } from "@/components/sections/testimonial-bar"
 import { IndustrySelection } from "@/components/sections/industry-selection"
 import { TestimonialsSection } from "@/components/sections/testimonials-section"
+import { ExitIntentModal } from "@/components/ui/exit-intent-modal"
 import { TrendingUp, DollarSign, Users, Target } from "lucide-react"
 import type { Metadata } from "next"
 
@@ -62,13 +65,12 @@ export default function HomePage() {
 
       <HeroSection
         industry="general"
-        headline="Stop Losing Leads. Start Closing More Deals."
-        subheadline="Specialized sales training for blue-collar businesses and service professionals. Learn the systems that turn leads into loyal customers who pay premium rates."
+        headline="🚨 If You're Chasing Leads or Losing Quotes—This Audit Will Show You Why"
+        subheadline="Whether you're in trades, real estate, med spas, or law—you shouldn't be guessing where your sales are leaking. Our 30-minute ESS Sales Leak Audit ($297 value) gives you clarity, not fluff."
         benefits={[
-          "Convert more leads into paying customers",
-          "Stop competing on price and start selling value",
-          "Build systems for consistent, predictable revenue",
-          "Create customer relationships that generate referrals",
+          "✅ Designed for service businesses: from contractors to closers",
+          "✅ No tech stack required—just bring how you sell today",
+          "✅ We'll show you what's broken and what to fix next",
         ]}
         formTitle="Ready to Transform Your Sales?"
         formDescription="Get the sales system that works for your industry."
@@ -76,10 +78,14 @@ export default function HomePage() {
       />
 
       <BenefitsSection
-        title="How We Help Service Businesses Close More Deals"
+        title="What You'll Walk Away With"
         subtitle="Our proven strategies help business owners convert more leads, charge premium rates, and build lasting customer relationships."
         benefits={benefits}
       />
+
+      <WhoWeHelped />
+
+      <TestimonialBar />
 
       <div id="industries">
         <IndustrySelection />
@@ -88,6 +94,8 @@ export default function HomePage() {
       <TestimonialsSection title="Success Stories from Real Business Owners" testimonials={testimonials} />
 
       <Footer />
+
+      <ExitIntentModal />
     </div>
   )
 }

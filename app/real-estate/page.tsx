@@ -6,6 +6,7 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { BreadcrumbNav } from "@/components/ui/breadcrumb-nav"
 import { BackToIndustries } from "@/components/ui/back-to-industries"
 import { TrendingUp, DollarSign, Users, Home } from "lucide-react"
+import Link from "next/link"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -72,15 +73,29 @@ export default function RealEstatePage() {
 
       <BackToIndustries />
 
+      {/* Pain Point Intro */}
+      <section className="py-8 bg-white-smoke">
+        <div className="container mx-auto container-padding">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-lg text-steel-grey leading-relaxed">
+              <strong>Real estate agents:</strong> You're losing listings to agents who respond faster, follow up
+              consistently, and position themselves as market experts—not just another salesperson. If you're tired of
+              "let me think about it" and want to become the agent clients choose first, this audit is for you.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <HeroSection
         industry="real-estate"
         headline="For Real Estate Agents: Dominate Your Local Market"
         subheadline="Stop chasing leads and start attracting quality clients. Our specialized training helps real estate professionals build a thriving practice with premium listings and loyal clients who refer their friends."
         benefits={[
+          "Speed up lead response time and double your callback rates",
           "Convert more leads into signed listing agreements",
-          "Build a referral network that brings you quality clients",
+          "Build a referral network that brings you quality clients automatically",
           "Position yourself as the premium agent in your area",
-          "Create systems for consistent, predictable income",
+          "Create systems for consistent, predictable income year-round",
         ]}
         formTitle="Ready to Dominate Your Market?"
         formDescription="Get the real estate sales system that builds lasting success."
@@ -92,6 +107,25 @@ export default function RealEstatePage() {
         subtitle="Our proven strategies help agents attract quality listings, close more deals, and build lasting client relationships."
         benefits={benefits}
       />
+
+      {/* Trust Bar */}
+      <section className="py-8 bg-white-smoke">
+        <div className="container mx-auto container-padding">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-construction-yellow">
+              <p className="text-steel-grey mb-4">
+                <strong>"We doubled our booked estimates in 14 days."</strong>
+              </p>
+              <p className="text-sm text-steel-grey">— Sarah, Real Estate Agent</p>
+            </div>
+            <div className="mt-8">
+              <Link href="/book" className="btn-primary text-lg px-8 py-4">
+                📞 Book My Free Audit – ($297 Value)
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <TestimonialsSection title="Real Estate Success Stories" testimonials={testimonials} />
 
