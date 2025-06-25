@@ -1,4 +1,4 @@
-"use client"
+// This is a Server Component
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -9,12 +9,7 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 
 export default function BookingPage() {
-  const scrollToCalendly = () => {
-    const calendlySection = document.getElementById("calendly-embed")
-    if (calendlySection) {
-      calendlySection.scrollIntoView({ behavior: "smooth" })
-    }
-  }
+  // Remove the scrollToCalendly function entirely
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -36,9 +31,9 @@ export default function BookingPage() {
             <Button
               size="xl"
               className="bg-primary hover:bg-primary/90 text-white font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
-              onClick={scrollToCalendly}
+              asChild
             >
-              📩 Get My Free Sales Blueprint
+              <a href="#calendly-embed">📩 Get My Free Sales Blueprint</a>
             </Button>
           </div>
         </section>
@@ -194,9 +189,9 @@ export default function BookingPage() {
             <Button
               size="xl"
               className="bg-primary hover:bg-primary/90 text-white font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
-              onClick={scrollToCalendly}
+              asChild
             >
-              📞 Book My ESS Audit Now
+              <a href="#calendly-embed">📞 Book My ESS Audit Now</a>
             </Button>
           </div>
         </section>
