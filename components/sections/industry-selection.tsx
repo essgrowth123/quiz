@@ -28,6 +28,12 @@ const industries = [
     href: "/landscaping",
     emoji: "🌱",
   },
+  {
+    title: "More Industries",
+    description: "Serving Doctors, Dentists, Med Spas, Attorneys, Coaches & More",
+    href: "#who-we-helped",
+    emoji: "🏥",
+  },
 ]
 
 export function IndustrySelection() {
@@ -44,10 +50,11 @@ export function IndustrySelection() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-8 lg:gap-10">
+          {/* Industry Cards Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-8">
             {industries.map((industry) => (
               <Link key={industry.href} href={industry.href} className="group">
-                <Card className="h-full card-hover border-2 border-transparent group-hover:border-construction-yellow bg-white">
+                <Card className="industry-card h-full border-2 border-transparent group-hover:border-construction-yellow bg-white">
                   <CardContent className="p-8 lg:p-10 text-center h-full flex flex-col justify-center">
                     <div className="text-6xl mb-6 icon-hover">{industry.emoji}</div>
                     <h3 className="text-xl lg:text-2xl font-bold text-black-charcoal mb-4 group-hover:text-ess-blue transition-colors duration-300 font-oswald">
@@ -58,6 +65,11 @@ export function IndustrySelection() {
                 </Card>
               </Link>
             ))}
+          </div>
+
+          {/* Additional Industries Line */}
+          <div className="additional-industries">
+            Also serving: Doctors · Dentists · Med Spas · Attorneys · Pet Services
           </div>
         </div>
       </div>

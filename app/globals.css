@@ -85,50 +85,56 @@
 }
 
 @layer components {
-  /* Hero Heading Styles */
-  .hero h1,
-  .hero-heading {
+  /* Hero Heading Styles - Clean Version */
+  .hero h1 {
     background: none !important;
     background-color: transparent !important;
-    color: #f5f5f5; /* Use White Smoke for high contrast */
-    padding: 0;
-    margin: 0 0 16px 0;
+    color: #f5f5f5;
     font-family: "Oswald", sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
-    line-height: 1.3;
     text-align: center;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); /* Optional for pop */
+    padding: 0;
+    margin: 0 0 16px 0;
+    line-height: 1.3;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   }
 
   /* Responsive hero heading sizes */
   @media (min-width: 640px) {
-    .hero h1,
-    .hero-heading {
+    .hero h1 {
       font-size: 3rem;
     }
   }
 
   @media (min-width: 768px) {
-    .hero h1,
-    .hero-heading {
+    .hero h1 {
       font-size: 3.5rem;
     }
   }
 
   @media (min-width: 1024px) {
-    .hero h1,
-    .hero-heading {
+    .hero h1 {
       font-size: 4rem;
       text-align: left;
     }
   }
 
   @media (min-width: 1280px) {
-    .hero h1,
-    .hero-heading {
+    .hero h1 {
       font-size: 4.5rem;
     }
+  }
+
+  /* Industry Card Hover Effects */
+  .industry-card {
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  .industry-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
   }
 
   /* Primary Button - Black Charcoal with ESS Blue hover */
@@ -244,6 +250,16 @@
     background: linear-gradient(to right, transparent, var(--steel-grey), transparent);
     margin: 2rem 0;
     opacity: 0.3;
+  }
+
+  /* Additional Industries Line */
+  .additional-industries {
+    color: var(--construction-yellow);
+    font-family: var(--font-roboto);
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+    font-weight: 500;
   }
 }
 

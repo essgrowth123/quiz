@@ -56,8 +56,10 @@ export function HeroSection({
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left Column - Content */}
             <div className="mobile-center space-y-8">
-              {/* Clean Hero Heading */}
-              <h1 className="hero-heading">Ready to transform your sales process and boost conversions?</h1>
+              {/* Clean Hero Heading - No Background */}
+              <h1 style={{ background: "none", backgroundColor: "transparent" }}>
+                Ready to transform your sales process and boost conversions?
+              </h1>
 
               {/* Subheadline */}
               <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-white-smoke max-w-2xl mx-auto lg:mx-0 opacity-90">
