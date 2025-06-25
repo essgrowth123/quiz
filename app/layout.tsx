@@ -7,19 +7,30 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 const oswald = Oswald({
   subsets: ["latin"],
-  variable: "--font-oswald",
   weight: ["400", "500", "600", "700"],
+  variable: "--font-oswald",
+  display: "swap",
 })
 
 const roboto = Roboto({
   subsets: ["latin"],
-  variable: "--font-roboto",
   weight: ["300", "400", "500", "700"],
+  variable: "--font-roboto",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: "Engineered Success Sales",
-  description: "Sales training that actually works",
+  title: "Engineered Success Sales | Sales Training for Blue-Collar Businesses",
+  description:
+    "Stop losing leads and start closing more deals. Specialized sales training for contractors, real estate agents, auto detailers, and service businesses.",
+  keywords: "sales training, contractor sales, real estate sales, business coaching, lead conversion",
+  authors: [{ name: "Engineered Success Sales" }],
+  openGraph: {
+    title: "Engineered Success Sales | Sales Training for Blue-Collar Businesses",
+    description:
+      "Stop losing leads and start closing more deals. Specialized sales training for contractors, real estate agents, auto detailers, and service businesses.",
+    type: "website",
+  },
     generator: 'v0.dev'
 }
 
@@ -29,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${oswald.variable} ${roboto.variable}`}>
       <head>
         {/* Google Analytics - Replace G-XXXXXXXXXX with your actual Measurement ID */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" strategy="afterInteractive" />
@@ -88,7 +99,7 @@ export default function RootLayout({
           />
         </noscript>
       </head>
-      <body className={`${oswald.variable} ${roboto.variable} antialiased`}>
+      <body className="font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>

@@ -7,53 +7,51 @@ import { TrendingUp, DollarSign, Users, Target } from "lucide-react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Sales Training That Actually Works | Engineered Success Sales",
+  title: "Sales Training for Blue-Collar Businesses | Engineered Success Sales",
   description:
-    "Stop losing leads and start closing more deals. Specialized sales training for contractors, real estate agents, and service professionals.",
+    "Stop losing leads and start closing more deals. Specialized sales training for contractors, real estate agents, auto detailers, and service businesses.",
 }
 
 export default function HomePage() {
   const benefits = [
     {
       icon: TrendingUp,
-      title: "More Qualified Leads",
-      description: "Stop chasing unqualified prospects and attract clients ready to buy.",
+      title: "More Conversions",
+      description: "Turn more leads into paying customers with proven sales systems.",
       color: "yellow" as const,
     },
     {
       icon: DollarSign,
-      title: "Higher Close Rates",
-      description: "Convert more leads into paying customers with proven sales systems.",
+      title: "Higher Profits",
+      description: "Stop competing on price and start selling value and expertise.",
       color: "blue" as const,
     },
     {
       icon: Users,
-      title: "Premium Pricing",
-      description: "Stop competing on price and start selling value and expertise.",
+      title: "Better Relationships",
+      description: "Build trust with customers and create lasting business relationships.",
       color: "yellow" as const,
     },
     {
       icon: Target,
-      title: "Predictable Revenue",
-      description: "Build systems that generate consistent, predictable income month after month.",
+      title: "Proven Systems",
+      description: "Get sales processes that work for blue-collar and service businesses.",
       color: "blue" as const,
     },
   ]
 
   const testimonials = [
     {
-      name: "Mike Rodriguez",
-      title: "Contractor, Rodriguez Construction",
-      content:
-        "I stopped bidding against low-ballers and started winning $50K+ projects. My profit margins doubled in 4 months.",
-      image: "/placeholder.svg?height=80&width=80&text=MR",
+      name: "Mike Thompson",
+      title: "HVAC Contractor",
+      content: "ESS helped me stop losing bids to low-ballers. I now win 80% of my quotes and charge premium rates.",
+      image: "/placeholder.svg?height=80&width=80&text=MT",
     },
     {
-      name: "Sarah Mitchell",
+      name: "Jessica Rodriguez",
       title: "Real Estate Agent",
-      content:
-        "ESS helped me triple my listings in 6 months. I went from chasing leads to having clients call me directly.",
-      image: "/placeholder.svg?height=80&width=80&text=SM",
+      content: "The referral system they taught me generates most of my business now. I haven't cold-called in months.",
+      image: "/placeholder.svg?height=80&width=80&text=JR",
     },
   ]
 
@@ -64,25 +62,25 @@ export default function HomePage() {
       <HeroSection
         industry="general"
         headline="Stop Losing Leads. Start Closing More Deals."
-        subheadline="Specialized sales training for contractors, real estate agents, and service professionals who want to stop competing on price and start building profitable, sustainable businesses."
+        subheadline="Specialized sales training for blue-collar businesses and service professionals. Learn the systems that turn leads into loyal customers who pay premium rates."
         benefits={[
           "Convert more leads into paying customers",
           "Stop competing on price and start selling value",
-          "Build predictable revenue systems that work",
-          "Position yourself as the expert in your field",
+          "Build systems for consistent, predictable revenue",
+          "Create customer relationships that generate referrals",
         ]}
         formTitle="Ready to Transform Your Sales?"
-        formDescription="Get the sales training that helps you sell value, not just price."
+        formDescription="Get the sales system that works for your industry."
         businessLabel="Business Name"
       />
 
       <BenefitsSection
-        title="How We Help Service Professionals Build Thriving Businesses"
-        subtitle="Our proven strategies help you attract quality clients, charge premium rates, and build lasting success."
+        title="How We Help Service Businesses Close More Deals"
+        subtitle="Our proven strategies help business owners convert more leads, charge premium rates, and build lasting customer relationships."
         benefits={benefits}
       />
 
-      <TestimonialsSection title="Success Stories" testimonials={testimonials} />
+      <TestimonialsSection title="Success Stories from Real Business Owners" testimonials={testimonials} />
 
       <Footer />
     </div>
