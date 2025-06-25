@@ -61,8 +61,11 @@ export function HeroSection({
                 Ready to transform your sales process and boost conversions?
               </h1>
 
-              {/* Subheadline */}
-              <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-white-smoke max-w-2xl mx-auto lg:mx-0 opacity-90">
+              {/* Subheadline - Updated Color for Readability */}
+              <p
+                className="text-lg sm:text-xl lg:text-2xl leading-relaxed max-w-2xl mx-auto lg:mx-0"
+                style={{ color: "#F2C038" }}
+              >
                 Whether you're in trades, real estate, med spas, or law—you shouldn't be guessing where your sales are
                 leaking. Our 30-minute ESS Sales Leak Audit ($297 value) gives you clarity, not fluff.
               </p>
