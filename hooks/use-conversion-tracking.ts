@@ -40,6 +40,27 @@ export function useConversionTracking(
       page,
       event: "calendly_click",
     })
+
+    // Track the actual Calendly URL
+    if (typeof window !== "undefined") {
+      // Facebook Pixel
+      if ((window as any).fbq) {
+        ;(window as any).fbq("track", "Schedule", {
+          content_name: "ESS 30-Minute Sales Leak Audit",
+          value: 0,
+          currency: "USD",
+        })
+      }
+
+      // Google Analytics
+      if ((window as any).gtag) {
+        ;(window as any).gtag("event", "calendly_booking_click", {
+          event_category: "engagement",
+          event_label: page,
+          value: 1,
+        })
+      }
+    }
   }
 
   const trackFormError = (error: string) => {

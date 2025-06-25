@@ -125,7 +125,7 @@ export default function PersonalTrainerPage() {
     setFormSubmitted(true)
     setTimeout(() => {
       trackCalendlyClick()
-      window.open("https://calendly.com/essgrowth/30min", "_blank")
+      window.open("https://calendly.com/essgrowth/sales-leak-audit", "_blank")
     }, 2000)
   }
 
@@ -250,12 +250,12 @@ export default function PersonalTrainerPage() {
                 Success!
               </h1>
               <p className="text-xl text-gray-600 mb-8" style={{ fontFamily: "Roboto, sans-serif" }}>
-                Redirecting you to Calendly to book your personal training business consultation...
+                Redirecting you to Calendly to book your 30-minute Sales Leak Audit...
               </p>
               <Button
                 onClick={() => {
                   trackCalendlyClick()
-                  window.open("https://calendly.com/essgrowth/30min", "_blank")
+                  window.open("https://calendly.com/essgrowth/sales-leak-audit", "_blank")
                 }}
                 className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg"
                 style={{ fontFamily: "Montserrat, sans-serif", backgroundColor: "#003366" }}
@@ -451,7 +451,7 @@ export default function PersonalTrainerPage() {
                         backgroundColor: "#003366",
                       }}
                     >
-                      Get My Personal Training Business Plan
+                      Get Your Free Sales Leak Audit
                     </Button>
 
                     <p

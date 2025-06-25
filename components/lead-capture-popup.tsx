@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { X, TrendingUp, DollarSign, Target } from "lucide-react"
 import { analytics } from "../lib/analytics"
+import { PopupCTA, useABTestConversion } from "./cta-variants"
 
 interface LeadCapturePopupProps {
   industry?: string
@@ -21,6 +22,7 @@ export function LeadCapturePopup({ industry = "business", isOpen, onClose }: Lea
   const [name, setName] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const { trackConversion } = useABTestConversion()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -30,6 +32,7 @@ export function LeadCapturePopup({ industry = "business", isOpen, onClose }: Lea
 
     // Track the popup conversion
     analytics.trackConversion(industry, "popup")
+    trackConversion("popup_cta_test", "form_submit")
 
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000))
@@ -62,6 +65,11 @@ export function LeadCapturePopup({ industry = "business", isOpen, onClose }: Lea
       setEmail("")
       setName("")
     }, 3000)
+  }
+
+  const handleCTAClick = () => {
+    trackConversion("popup_cta_test", "click")
+    window.open("https://calendly.com/essgrowth/30min", "_blank")
   }
 
   if (isSubmitted) {
@@ -187,6 +195,12 @@ export function LeadCapturePopup({ industry = "business", isOpen, onClose }: Lea
               )}
             </Button>
           </form>
+
+          {/* Alternative CTA */}
+          <div className="mt-4 text-center">
+            <p className="text-xs text-slate-400 mb-3">Or skip the guide and book your audit directly:</p>
+            <PopupCTA onClick={handleCTAClick} industry={industry} />
+          </div>
 
           {/* Trust indicators */}
           <div className="mt-4 text-center">

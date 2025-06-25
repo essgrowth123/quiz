@@ -126,7 +126,7 @@ export default function DentistPage() {
     setFormSubmitted(true)
     setTimeout(() => {
       trackCalendlyClick()
-      window.open("https://calendly.com/essgrowth/30min", "_blank")
+      window.open("https://calendly.com/essgrowth/sales-leak-audit", "_blank")
     }, 2000)
   }
 
@@ -184,12 +184,12 @@ export default function DentistPage() {
                 Success!
               </h1>
               <p className="text-xl text-gray-600 mb-8" style={{ fontFamily: "Roboto, sans-serif" }}>
-                Redirecting you to Calendly to book your dental practice consultation...
+                Redirecting you to Calendly to book your 30-minute Sales Leak Audit...
               </p>
               <Button
                 onClick={() => {
                   trackCalendlyClick()
-                  window.open("https://calendly.com/essgrowth/30min", "_blank")
+                  window.open("https://calendly.com/essgrowth/sales-leak-audit", "_blank")
                 }}
                 className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-3 text-lg"
                 style={{ fontFamily: "Montserrat, sans-serif", backgroundColor: "#003366" }}
@@ -275,12 +275,12 @@ export default function DentistPage() {
                 <Button
                   onClick={() => {
                     trackCalendlyClick()
-                    window.open("https://calendly.com/essgrowth/30min", "_blank")
+                    window.open("https://calendly.com/essgrowth/sales-leak-audit", "_blank")
                   }}
                   className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-6 py-4 text-base sm:text-lg shadow-lg transition-transform active:scale-[0.97] w-full sm:w-auto"
                   style={{ fontFamily: "Montserrat, sans-serif" }}
                 >
-                  🦷 Get Your Dental Practice Growth Plan
+                  🦷 Get Your Free Sales Leak Audit
                 </Button>
               </div>
             </div>
@@ -386,7 +386,7 @@ export default function DentistPage() {
                         backgroundColor: "#003366",
                       }}
                     >
-                      Get My Dental Practice Growth Plan
+                      Get My Free Sales Leak Audit
                     </Button>
 
                     <p
@@ -541,7 +541,7 @@ export default function DentistPage() {
               <Button
                 onClick={() => {
                   trackCalendlyClick()
-                  window.open("https://calendly.com/essgrowth/30min", "_blank")
+                  window.open("https://calendly.com/essgrowth/sales-leak-audit", "_blank")
                 }}
                 className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-6 py-4 text-base sm:text-lg shadow-lg transition-transform active:scale-[0.97] w-full sm:w-auto"
                 style={{ fontFamily: "Montserrat, sans-serif" }}

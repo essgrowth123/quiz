@@ -313,7 +313,7 @@ export default function AutomotiveDealershipPage() {
                 Success!
               </h1>
               <p className="text-xl text-gray-600 mb-8" style={{ fontFamily: "Roboto, sans-serif" }}>
-                Redirecting you to Calendly to book your automotive sales training consultation...
+                Redirecting you to Calendly to book your 30-minute Sales Leak Audit...
               </p>
               <Button
                 onClick={() => {
@@ -414,7 +414,7 @@ export default function AutomotiveDealershipPage() {
                   className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-8 py-4 text-lg shadow-lg transition-transform active:scale-[0.97]"
                   style={{ fontFamily: "Montserrat, sans-serif" }}
                 >
-                  📞 Get Your Free Sales Training Consultation
+                  📞 Get Your Free Sales Leak Audit
                 </Button>
               </div>
             </div>
