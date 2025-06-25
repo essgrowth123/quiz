@@ -17,6 +17,22 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen)
+  }
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false)
+  }
+
+  const closeMenu = () => {
+    setIsMenuOpen(false)
+  }
+
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto container-padding">
@@ -37,7 +53,7 @@ export function Header() {
           <nav className="hidden lg:flex items-center space-x-8">
             <div className="relative">
               <button
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                onClick={toggleDropdown}
                 className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 font-medium"
               >
                 <span>Industries</span>
@@ -52,7 +68,7 @@ export function Header() {
                         key={industry.href}
                         href={industry.href}
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setIsDropdownOpen(false)}
+                        onClick={closeDropdown}
                       >
                         {industry.name}
                       </Link>
@@ -71,7 +87,7 @@ export function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden p-2">
+          <button onClick={toggleMenu} className="lg:hidden p-2">
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
@@ -87,7 +103,7 @@ export function Header() {
                     key={industry.href}
                     href={industry.href}
                     className="block px-6 py-2 text-gray-700 hover:bg-gray-100"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={closeMenu}
                   >
                     {industry.name}
                   </Link>

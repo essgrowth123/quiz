@@ -9,7 +9,7 @@
   --card-foreground: 222.2 84% 4.9%;
   --popover: 0 0% 100%;
   --popover-foreground: 222.2 84% 4.9%;
-  --primary: 0 72% 41%;
+  --primary: #b02020;
   --primary-foreground: 210 40% 98%;
   --secondary: 210 40% 96%;
   --secondary-foreground: 222.2 84% 4.9%;
@@ -38,6 +38,7 @@
   --sidebar-ring: 221.2 83.2% 53.3%;
   --font-oswald: "Oswald", sans-serif;
   --font-roboto: "Roboto", sans-serif;
+  --primary-hover: #901818;
 }
 
 .dark {
@@ -81,7 +82,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans font-roboto;
     line-height: 1.6;
   }
 
@@ -94,6 +95,21 @@
     font-family: var(--font-oswald);
     font-weight: 700;
     line-height: 1.2;
+    @apply font-oswald;
+  }
+}
+
+@layer components {
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-spacing {
+    @apply py-12 sm:py-16 lg:py-24;
+  }
+
+  .mobile-center {
+    @apply text-center lg:text-left;
   }
 }
 
@@ -138,6 +154,18 @@
   /* Card Hover Effects */
   .card-hover {
     @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .text-primary {
+    color: var(--primary);
+  }
+
+  .bg-primary {
+    background-color: var(--primary);
+  }
+
+  .hover\:bg-primary\/90:hover {
+    background-color: var(--primary-hover);
   }
 }
 
