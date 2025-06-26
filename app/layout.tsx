@@ -3,35 +3,35 @@ import type { Metadata } from "next"
 import Script from "next/script"
 import "./globals.css"
 import { Oswald, Roboto } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
 
 const oswald = Oswald({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   variable: "--font-oswald",
-  display: "swap",
+  weight: ["400", "600", "700"],
 })
 
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
   variable: "--font-roboto",
-  display: "swap",
+  weight: ["300", "400", "500", "700"],
 })
 
 export const metadata: Metadata = {
-  title: "Engineered Success Sales | Sales Training for Blue-Collar Businesses",
-  description:
-    "Stop losing leads and start closing more deals. Specialized sales training for contractors, real estate agents, auto detailers, and service businesses.",
-  keywords: "sales training, contractor sales, real estate sales, business coaching, lead conversion",
-  authors: [{ name: "Engineered Success Sales" }],
-  openGraph: {
-    title: "Engineered Success Sales | Sales Training for Blue-Collar Businesses",
-    description:
-      "Stop losing leads and start closing more deals. Specialized sales training for contractors, real estate agents, auto detailers, and service businesses.",
-    type: "website",
+  title: "Engineered Success Sales - Sales Training & Consulting",
+  description: "Professional sales training and consulting services for businesses across all industries.",
+  generator: "v0.dev",
+  icons: {
+    icon: [
+      { url: "/ess-logo-light.png", sizes: "32x32", type: "image/png" },
+      { url: "/ess-logo-light.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: "/ess-logo-light.png",
+    apple: [
+      { url: "/ess-logo-light.png", sizes: "180x180", type: "image/png" },
+      { url: "/ess-logo-light.png", sizes: "152x152", type: "image/png" },
+      { url: "/ess-logo-light.png", sizes: "144x144", type: "image/png" },
+    ],
   },
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -40,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${oswald.variable} ${roboto.variable}`}>
+    <html lang="en">
       <head>
         {/* Google Analytics - Replace G-XXXXXXXXXX with your actual Measurement ID */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" strategy="afterInteractive" />
@@ -99,10 +99,8 @@ export default function RootLayout({
           />
         </noscript>
       </head>
-      <body className="font-sans antialiased">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+      <body className={`${oswald.variable} ${roboto.variable} font-roboto`}>
+        {children}
 
         {/* Tracking Debug Panel - Remove in production */}
         <div

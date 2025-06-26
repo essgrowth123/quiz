@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import { ChevronDown, Menu, X } from "lucide-react"
 
@@ -10,37 +11,27 @@ const industries = [
   { name: "Contractors", href: "/contractors" },
   { name: "Auto Detailing", href: "/auto-detailing" },
   { name: "Landscaping", href: "/landscaping" },
-  { name: "More Industries…", href: "/#industries" },
+  { name: "HVAC", href: "/hvac" },
+  { name: "Medical", href: "/medical" },
+  { name: "Automotive", href: "/automotive" },
 ]
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen)
-  }
-
-  const closeDropdown = () => {
-    setIsDropdownOpen(false)
-  }
-
-  const closeMenu = () => {
-    setIsMenuOpen(false)
+  const handleCTAClick = () => {
+    window.open("https://calendly.com/essgrowth/30min", "_blank")
   }
 
   return (
-    <header className="bg-ess-blue shadow-lg sticky top-0 z-50">
+    <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto container-padding">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/ess-logo-light.png"
+              src="/placeholder.svg?height=60&width=200&text=ESS+Logo"
               alt="Engineered Success Sales"
               width={200}
               height={60}
@@ -53,26 +44,22 @@ export function Header() {
           <nav className="hidden lg:flex items-center space-x-8">
             <div className="relative">
               <button
-                onClick={toggleDropdown}
-                className="flex items-center space-x-1 text-white hover:text-construction-yellow font-medium transition-colors duration-200"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="flex items-center space-x-1 text-gray-700 hover:text-gray-900 font-medium"
               >
                 <span>Industries</span>
                 <ChevronDown className="h-4 w-4" />
               </button>
 
               {isDropdownOpen && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-xl border z-50">
+                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border z-50">
                   <div className="py-2">
-                    {industries.map((industry, index) => (
+                    {industries.map((industry) => (
                       <Link
                         key={industry.href}
                         href={industry.href}
-                        className={`block px-4 py-2 text-sm transition-colors duration-200 ${
-                          index === industries.length - 1
-                            ? "text-construction-yellow font-semibold hover:bg-white-smoke"
-                            : "text-steel-grey hover:bg-white-smoke hover:text-ess-blue"
-                        }`}
-                        onClick={closeDropdown}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsDropdownOpen(false)}
                       >
                         {industry.name}
                       </Link>
@@ -85,43 +72,39 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:block">
-            <Link href="/book" className="btn-primary text-sm px-6 py-3">
+            <Button variant="primary" size="lg" onClick={handleCTAClick} className="text-sm">
               📞 Book My Free Audit – ($297 Value)
-            </Link>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button onClick={toggleMenu} className="lg:hidden p-2 text-white">
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden p-2">
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden border-t border-blue-800 bg-ess-blue">
+          <div className="lg:hidden border-t bg-white">
             <div className="py-4 space-y-4">
               <div className="space-y-2">
-                <p className="font-medium text-white px-4">Industries</p>
-                {industries.map((industry, index) => (
+                <p className="font-medium text-gray-900 px-4">Industries</p>
+                {industries.map((industry) => (
                   <Link
                     key={industry.href}
                     href={industry.href}
-                    className={`block px-6 py-2 transition-colors duration-200 ${
-                      index === industries.length - 1
-                        ? "text-construction-yellow font-semibold hover:bg-blue-800"
-                        : "text-white hover:bg-blue-800 hover:text-construction-yellow"
-                    }`}
-                    onClick={closeMenu}
+                    className="block px-6 py-2 text-gray-700 hover:bg-gray-100"
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     {industry.name}
                   </Link>
                 ))}
               </div>
 
-              <div className="px-4 pt-4 border-t border-blue-800">
-                <Link href="/book" className="btn-primary w-full text-center block py-3" onClick={closeMenu}>
+              <div className="px-4 pt-4 border-t">
+                <Button variant="primary" size="xl" onClick={handleCTAClick} className="w-full text-sm">
                   📞 Book My Free Audit – ($297 Value)
-                </Link>
+                </Button>
               </div>
             </div>
           </div>
