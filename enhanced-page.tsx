@@ -66,7 +66,6 @@ export function EnhancedPage() {
           <img src="/images/ess-logo.png" alt="Engineered Success Sales" className="h-14 w-auto" />
         </div>
         <nav className="flex items-center gap-6">
-          <span className="text-gray-600">Industries</span>
           <Button className="bg-red-600 hover:bg-red-700 text-white px-6">BOOK MY FREE AUDIT - ($297 VALUE)</Button>
         </nav>
       </header>
