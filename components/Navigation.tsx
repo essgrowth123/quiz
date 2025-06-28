@@ -1,28 +1,29 @@
 "use client"
 
 import { useState } from "react"
-import { Link, useLocation } from "react-router-dom"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { ChevronDown, Menu, X } from "lucide-react"
 
 export default function Navigation() {
   const [isIndustriesOpen, setIsIndustriesOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const location = useLocation()
+  const pathname = usePathname()
 
   const industries = [
-    { name: "Healthcare", path: "/industries/healthcare" },
-    { name: "Construction", path: "/industries/construction" },
-    { name: "Real Estate", path: "/industries/real-estate" },
-    { name: "Home Services", path: "/industries/home-services" },
-    { name: "Manufacturing", path: "/industries/manufacturing" },
-    { name: "Automotive", path: "/industries/automotive" },
+    { name: "Healthcare", href: "/industries/healthcare" },
+    { name: "Construction", href: "/industries/construction" },
+    { name: "Real Estate", href: "/industries/real-estate" },
+    { name: "Home Services", href: "/industries/home-services" },
+    { name: "Manufacturing", href: "/industries/manufacturing" },
+    { name: "Automotive", href: "/industries/automotive" },
   ]
 
   return (
     <header className="flex justify-between items-center px-6 py-4 border-b bg-white sticky top-0 z-50">
       <div className="flex items-center">
-        <Link to="/">
+        <Link href="/">
           <img src="/images/ess-logo.png" alt="Engineered Success Sales" className="h-14 w-auto" />
         </Link>
       </div>
@@ -30,9 +31,9 @@ export default function Navigation() {
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-6">
         <Link
-          to="/"
+          href="/"
           className={`text-gray-600 hover:text-gray-900 transition-colors ${
-            location.pathname === "/" ? "text-gray-900 font-semibold" : ""
+            pathname === "/" ? "text-gray-900 font-semibold" : ""
           }`}
         >
           Home
@@ -52,8 +53,8 @@ export default function Navigation() {
             <div className="absolute top-full left-0 mt-2 w-48 bg-white border rounded-lg shadow-lg py-2 z-50">
               {industries.map((industry) => (
                 <Link
-                  key={industry.path}
-                  to={industry.path}
+                  key={industry.href}
+                  href={industry.href}
                   className="block px-4 py-2 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
                   onClick={() => setIsIndustriesOpen(false)}
                 >
@@ -64,7 +65,7 @@ export default function Navigation() {
           )}
         </div>
 
-        <Link to="/book">
+        <Link href="/book">
           <Button className="bg-red-600 hover:bg-red-700 text-white px-6">BOOK MY FREE AUDIT - ($297 VALUE)</Button>
         </Link>
       </nav>
@@ -79,7 +80,7 @@ export default function Navigation() {
         <div className="absolute top-full left-0 right-0 bg-white border-b shadow-lg md:hidden">
           <nav className="flex flex-col p-4 space-y-4">
             <Link
-              to="/"
+              href="/"
               className="text-gray-600 hover:text-gray-900 transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -90,8 +91,8 @@ export default function Navigation() {
               <div className="text-gray-600 font-medium">Industries:</div>
               {industries.map((industry) => (
                 <Link
-                  key={industry.path}
-                  to={industry.path}
+                  key={industry.href}
+                  href={industry.href}
                   className="block pl-4 text-gray-600 hover:text-gray-900 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -100,7 +101,7 @@ export default function Navigation() {
               ))}
             </div>
 
-            <Link to="/book" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link href="/book" onClick={() => setIsMobileMenuOpen(false)}>
               <Button className="bg-red-600 hover:bg-red-700 text-white w-full">
                 BOOK MY FREE AUDIT - ($297 VALUE)
               </Button>

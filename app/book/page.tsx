@@ -1,7 +1,7 @@
 "use client"
 
-import Navigation from "./Navigation"
-import { EnhancedPage } from "../enhanced-page"
+import Navigation from "../../components/Navigation"
+import { EnhancedPage } from "../../enhanced-page"
 
 export default function BookPage() {
   return (
