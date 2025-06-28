@@ -1,5 +1,5 @@
-import ResponsiveTester from "../responsive-tester"
+import { EnhancedPage } from "../enhanced-page"
 
 export default function Page() {
-  return <ResponsiveTester />
+  return <EnhancedPage />
 }
