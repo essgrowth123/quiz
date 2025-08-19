@@ -7,6 +7,10 @@
     {
       "source": "/quiz/:path*",
       "destination": "/app/quiz/:path*"
+    },
+    {
+      "source": "/",
+      "destination": "/app"
     }
   ]
 }
