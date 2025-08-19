@@ -1,0 +1,8 @@
+export default function HomePage() {
+  return (
+    <div style={{ padding: '50px', textAlign: 'center', fontFamily: 'sans-serif' }}>
+      <h1>Welcome</h1>
+      <p>Please visit our <a href="/quiz">quiz page</a>.</p>
+    </div>
+  );
+}
