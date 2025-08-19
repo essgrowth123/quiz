@@ -1,1 +1,17 @@
+{
+  "rewrites": [
+    {
+      "source": "/quiz",
+      "destination": "/app/quiz"
+    },
+    {
+      "source": "/quiz/:path*",
+      "destination": "/app/quiz/:path*"
+    },
+    {
+      "source": "/",
+      "destination": "/app"
+    }
+  ]
+}
 
